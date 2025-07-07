@@ -9,31 +9,32 @@ const Hero = () => {
   useEffect(() => {
     const fullName = "Nikhilesh N Marali";
     const firstNameEnd = 9;
-    let currentIndex = 0;
-
     const typeSpeed = 120;
     const pauseAfterFirstName = 1000;
     const initialDelay = 500;
 
-    let timeoutId: NodeJS.Timeout;
+    let currentIndex = 0;
+    let timeoutId: ReturnType<typeof setTimeout>;
 
     const type = () => {
-      if (currentIndex < fullName.length) {
-        setTypedText((prev) => prev + fullName[currentIndex]);
-        currentIndex++;
-
-        const delay =
-          currentIndex === firstNameEnd ? pauseAfterFirstName : typeSpeed;
-
-        timeoutId = setTimeout(type, delay);
-      } else {
-        setShowCursor(false); // stop blinking after done
+      if (currentIndex >= fullName.length) {
+        setShowCursor(false); // typing done, hide cursor
+        return;
       }
+
+      setTypedText((prev) => prev + fullName[currentIndex]);
+
+      currentIndex++;
+
+      const delay =
+        currentIndex === firstNameEnd ? pauseAfterFirstName : typeSpeed;
+
+      timeoutId = setTimeout(type, delay);
     };
 
     timeoutId = setTimeout(type, initialDelay);
 
-    return () => clearTimeout(timeoutId); // cleanup
+    return () => clearTimeout(timeoutId);
   }, []);
 
   const scrollToNext = () => {
@@ -46,7 +47,7 @@ const Hero = () => {
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      {/* Background Animation */}
+      {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-float"></div>
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl animate-float delay-300"></div>
@@ -142,7 +143,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll down indicator */}
         <div className="text-center mt-16 lg:mt-0">
           <button
             onClick={scrollToNext}
