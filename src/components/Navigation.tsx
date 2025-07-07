@@ -85,8 +85,8 @@ const Navigation = () => {
       setTimeout(() => {
         setShowMatrix(false);
         setFadeOut(false);
-      }, 800);
-    }, 4000);
+      }, 1200); // Slower fade out
+    }, 4000); // Rain lasts 4s
   };
 
   useEffect(() => {
@@ -96,7 +96,8 @@ const Navigation = () => {
     const ctx = canvas.getContext("2d")!;
     const navbarH = 64;
     const fontSize = 20;
-    const spacing = fontSize * 9; // More space between columns
+    const lineSpacing = fontSize * 2.2; // More vertical spacing
+    const columnSpacing = fontSize * 9;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -105,22 +106,22 @@ const Navigation = () => {
     resize();
     window.addEventListener("resize", resize);
 
-    const columns = Math.floor(canvas.width / spacing);
+    const columns = Math.floor(canvas.width / columnSpacing);
     const drops = Array(columns).fill(1);
 
     const draw = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.02)"; // very transparent trail
+      ctx.fillStyle = "rgba(0, 0, 0, 0.015)"; // ultra light trail
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = "rgba(0, 255, 0, 0.5)"; // slightly more visible words
+      ctx.fillStyle = "rgba(0, 255, 0, 0.55)"; // visible but not harsh
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
-        if (Math.random() > 0.5) continue; // 50% density
+        if (Math.random() > 0.6) continue; // reduce density
 
         const word = matrixWords[Math.floor(Math.random() * matrixWords.length)];
-        const x = i * spacing;
-        const y = drops[i] * fontSize;
+        const x = i * columnSpacing;
+        const y = drops[i] * lineSpacing;
 
         ctx.fillText(word, x, y);
 
@@ -152,7 +153,7 @@ const Navigation = () => {
               aria-label="Toggle Matrix Rain"
               className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r
                          from-blue-400 via-cyan-400 to-teal-400 hover:animate-glow
-                         transition-transform duration-200 active:scale-95 hover:scale-105"
+                         transition-transform duration-300 active:scale-95 hover:scale-105"
             >
               NNM
             </button>
@@ -216,11 +217,12 @@ const Navigation = () => {
         <canvas
           ref={canvasRef}
           className={`fixed left-0 top-16 w-screen h-[calc(100vh-4rem)] z-[40] pointer-events-none
-                      transition-opacity duration-700 ${fadeOut ? "opacity-0" : "opacity-100"}`}
+                      transition-opacity duration-[1400ms] ease-in-out
+                      ${fadeOut ? "opacity-0" : "opacity-100"}`}
           style={{
             backdropFilter: "blur(1px)",
             WebkitBackdropFilter: "blur(1px)",
-            backgroundColor: "rgba(0,0,0,0.03)",
+            backgroundColor: "rgba(0, 0, 0, 0.025)",
           }}
         />
       )}
