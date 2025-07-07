@@ -23,7 +23,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <div className="text-center lg:text-left animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-14">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-20">
               <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
                 Nikhilesh Marali
               </span>
@@ -51,14 +51,14 @@ const Hero = () => {
                 View My Work
               </a>
 
-              <a
+             <a
                 href="/NNM_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                download="Nikhilesh_Marali_Resume.pdf"
                 className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-slate-900 px-8 py-3 text-lg font-semibold rounded-md transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-400/25 inline-block"
-              >
+               >
                 Download Resume
-              </a>
+             </a>
+
             </div>
 
             {/* Social Icons */}
