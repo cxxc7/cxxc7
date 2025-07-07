@@ -30,15 +30,16 @@ const Hero = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 mb-4">
-              Information Science Student • Student Developer • AI Explorer • Creative Thinker • Passionate All-Rounder
+              Information Science Student • Student Developer • AI Explorer • Passionate All-Rounder • Creative Thinker 
             </p>
 
             <p className="text-lg text-gray-400 max-w-2xl lg:max-w-none leading-relaxed mb-8">
               Passionate about building smart, user-focused tools at the intersection of
               <span className="text-blue-400 font-semibold"> AI</span>,
               <span className="text-cyan-400 font-semibold"> creativity</span>, and
-              <span className="text-blue-300 font-semibold"> impact</span>.
+              <span className="text-blue-300 font-semibold"> real-world impact</span> — blending technology, design, and purposeful innovation.
             </p>
+
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-8">
@@ -105,7 +106,7 @@ const Hero = () => {
         </div>
 
         {/* Scroll down indicator */}
-        <div className="text-center mt-16 lg:mt-7">
+        <div className="text-center mt-16 lg:mt-4">
           <button
             onClick={scrollToNext}
             className="animate-bounce text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110"
