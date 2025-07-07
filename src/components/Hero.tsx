@@ -1,7 +1,36 @@
+import { useEffect, useState } from "react";
 import { ArrowDown, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
+  const [typedText, setTypedText] = useState("");
+
+  useEffect(() => {
+    const fullName = "Nikhilesh N Marali";
+    const firstNameEnd = 9; // After "Nikhilesh"
+    let currentIndex = 0;
+
+    const typeSpeed = 120; // ms per character
+    const pauseAfterFirstName = 1000; // ms pause
+    const initialDelay = 500;
+
+    const type = () => {
+      if (currentIndex < fullName.length) {
+        setTypedText((prev) => prev + fullName[currentIndex]);
+        currentIndex++;
+
+        const delay =
+          currentIndex === firstNameEnd ? pauseAfterFirstName : typeSpeed;
+
+        setTimeout(type, delay);
+      }
+    };
+
+    const startTyping = setTimeout(type, initialDelay);
+
+    return () => clearTimeout(startTyping);
+  }, []);
+
   const scrollToNext = () => {
     const aboutSection = document.querySelector("#about");
     aboutSection?.scrollIntoView({ behavior: "smooth" });
@@ -25,7 +54,8 @@ const Hero = () => {
           <div className="text-center lg:text-left animate-fade-in ml-6">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-20 whitespace-nowrap">
               <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
-                Nikhilesh N Marali
+                {typedText}
+                <span className="animate-pulse text-blue-300">|</span>
               </span>
             </h1>
 
@@ -60,7 +90,7 @@ const Hero = () => {
               </a>
             </div>
 
-            {/* ✅ Updated Social Icons */}
+            {/* Social Icons */}
             <div className="flex justify-center lg:justify-start space-x-4 mb-5">
               {/* GitHub */}
               <a
@@ -82,7 +112,7 @@ const Hero = () => {
                 <Linkedin size={30} className="text-[#0077B5]" />
               </a>
 
-              {/* Gmail Icon */}
+              {/* Gmail */}
               <a
                 href="mailto:nikhileshmarali7@gmail.com"
                 className="w-[42px] h-[42px] bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
