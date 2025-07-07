@@ -19,10 +19,8 @@ const matrixWords = [
   "React", "Next.js", "TypeScript", "JavaScript", "Tailwind", "shadcn/ui",
   "FastAPI", "Node.js", "Express.js", "REST", "Supabase", "MongoDB", "MySQL",
   "Git", "GitHub", "Docker", "VS Code", "Python", "Java", "C", "C++",
-  "Figma", "Render", "Vercel",
-  "PyTorch", "BERT", "Librosa", "OpenAI", "CrewAI",
-  "AlgoAce", "Graphos", "KeyShark", "DFlix",
-  "Football", "Badminton", "Run Co", "Travel", "Music",
+  "Figma", "Render", "Vercel", "PyTorch", "BERT", "Librosa", "OpenAI", "CrewAI",
+  "AlgoAce", "Graphos", "KeyShark", "DFlix", "Football", "Badminton", "Run Co", "Travel", "Music",
 ];
 
 const Navigation = () => {
@@ -31,6 +29,7 @@ const Navigation = () => {
   const [activeSection, setActiveSection] = useState("");
   const [showMatrix, setShowMatrix] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
+
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animRef = useRef<number | null>(null);
 
@@ -73,18 +72,17 @@ const Navigation = () => {
   };
 
   const toggleMatrixRain = () => {
-    if (showMatrix) return;
+    if (showMatrix) return; // prevent overlapping triggers
 
     setShowMatrix(true);
+    setFadeOut(false);
 
+    // Stop after 4s
     setTimeout(() => {
-      cancelAnimationFrame(animRef.current!);
       setFadeOut(true);
-      setTimeout(() => {
-        setShowMatrix(false);
-        setFadeOut(false);
-      }, 1400); // fade-out duration matches fade-in
-    }, 4000); // rain active for 4s
+      // Fully hide after fade-out duration (800ms match with CSS)
+      setTimeout(() => setShowMatrix(false), 1000);
+    }, 4000);
   };
 
   useEffect(() => {
@@ -94,8 +92,8 @@ const Navigation = () => {
     const ctx = canvas.getContext("2d")!;
     const navbarH = 64;
     const fontSize = 20;
-    const lineSpacing = fontSize * 2.2;
-    const columnSpacing = fontSize * 9;
+    const spacing = fontSize * 8; // horizontal column spacing
+    const lineHeight = fontSize * 2.4;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -104,27 +102,24 @@ const Navigation = () => {
     resize();
     window.addEventListener("resize", resize);
 
-    const columns = Math.floor(canvas.width / columnSpacing);
-    const drops = Array(columns).fill(1);
+    const columns = Math.floor(canvas.width / spacing);
+    const drops = Array(columns).fill(0).map(() => Math.floor(Math.random() * 50));
 
     const draw = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.01)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = "rgba(0, 255, 0, 0.55)";
-      ctx.font = `${fontSize}px ui-monospace, SFMono-Regular, Menlo, monospace`;
+      ctx.fillStyle = "rgba(0, 255, 0, 0.6)";
+      ctx.font = `${fontSize}px ui-monospace, SFMono-Regular, monospace`;
 
-      for (let i = 0; i < drops.length; i++) {
-        if (Math.random() > 0.6) continue;
-
+      for (let i = 0; i < columns; i++) {
+        const x = i * spacing;
+        const y = drops[i] * lineHeight;
         const word = matrixWords[Math.floor(Math.random() * matrixWords.length)];
-        const x = i * columnSpacing;
-        const y = drops[i] * lineSpacing;
-
         ctx.fillText(word, x, y);
 
-        if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
+        if (y > canvas.height && Math.random() > 0.95) drops[i] = 0;
+        else drops[i]++;
       }
 
       animRef.current = requestAnimationFrame(draw);
@@ -139,7 +134,7 @@ const Navigation = () => {
 
   return (
     <>
-      {/* Navbar */}
+      {/* ── Top Navbar ── */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-slate-900/90 backdrop-blur-md shadow-xl border-b border-blue-500/20"
@@ -152,33 +147,33 @@ const Navigation = () => {
               aria-label="Toggle Matrix Rain"
               className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r
                          from-blue-400 via-cyan-400 to-teal-400 hover:animate-glow
-                         transition-transform duration-300 active:scale-95 hover:scale-105"
+                         transition-transform duration-200 active:scale-95 hover:scale-105"
             >
               NNM
             </button>
 
             <div className="hidden md:flex space-x-6 items-center">
-              {navItems.map((i) => (
+              {navItems.map((item) => (
                 <button
-                  key={i.name}
-                  onClick={() => scrollTo(i.href)}
+                  key={item.name}
+                  onClick={() => scrollTo(item.href)}
                   className={`flex items-center text-base font-medium transition-all relative group ${
-                    activeSection === i.href
+                    activeSection === item.href
                       ? "text-blue-400"
                       : "text-gray-300 hover:text-blue-400"
                   }`}
                 >
-                  {i.icon}
-                  <span>{i.name}</span>
+                  {item.icon}
+                  <span>{item.name}</span>
                   <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r
-                                   from-blue-400 to-cyan-400 transition-all
-                                   ${activeSection === i.href ? "w-full" : "w-0 group-hover:w-full"}`} />
+                                   from-blue-400 to-cyan-400 transition-all duration-300
+                                   ${activeSection === item.href ? "w-full" : "w-0 group-hover:w-full"}`} />
                 </button>
               ))}
             </div>
 
             <button
-              className="md:hidden text-gray-300 hover:text-blue-400"
+              className="md:hidden text-gray-300 hover:text-blue-400 transition-colors"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
             >
               {isMobileOpen ? <X size={28} /> : <Menu size={28} />}
@@ -187,7 +182,7 @@ const Navigation = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* ── Mobile Sidebar ── */}
       <div className={`fixed top-0 left-0 h-full w-64 bg-slate-900/95 backdrop-blur-md pt-20 px-6 pb-6
                        transform transition-transform duration-300 z-40 border-r border-blue-500/20 md:hidden
                        ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}`}>
@@ -198,33 +193,37 @@ const Navigation = () => {
           </button>
         </div>
         <div className="space-y-4">
-          {navItems.map(i => (
-            <button key={i.name}
-              onClick={() => scrollTo(i.href)}
+          {navItems.map((item) => (
+            <button
+              key={item.name}
+              onClick={() => scrollTo(item.href)}
               className={`flex items-center text-base w-full text-left text-gray-300 hover:text-blue-400
-                         ${activeSection === i.href ? "text-blue-400" : ""}`}>
-              {i.icon}{i.name}
+                         ${activeSection === item.href ? "text-blue-400" : ""}`}
+            >
+              {item.icon}
+              {item.name}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Backdrop */}
       {isMobileOpen && (
-        <div className="fixed inset-0 bg-black/50 z-30 md:hidden" onClick={() => setIsMobileOpen(false)} />
+        <div
+          className="fixed inset-0 bg-black/50 z-30 md:hidden"
+          onClick={() => setIsMobileOpen(false)}
+        />
       )}
 
-      {/* Matrix Canvas */}
+      {/* ── Matrix Rain Canvas ── */}
       {showMatrix && (
         <canvas
           ref={canvasRef}
           className={`fixed left-0 top-16 w-screen h-[calc(100vh-4rem)] z-[40] pointer-events-none
-                      transition-opacity duration-[1400ms] ease-in-out
+                      transition-opacity duration-1000 ease-in-out
                       ${fadeOut ? "opacity-0" : "opacity-100"}`}
           style={{
-            backdropFilter: "blur(1px)",
-            WebkitBackdropFilter: "blur(1px)",
-            backgroundColor: "rgba(0, 0, 0, 0.01)",
+            backdropFilter: "blur(2px)",
+            WebkitBackdropFilter: "blur(2px)",
           }}
         />
       )}
