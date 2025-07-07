@@ -47,18 +47,6 @@
   <img src="https://skillicons.dev/icons?i=vercel,netlify,azure,pytorch,render,plotly" /><br>
 </p>
 
-<p align="center">
-  <!-- Regular skillicons -->
-  <img src="https://skillicons.dev/icons?i=plotly" />
-
-  <!-- Custom Matplotlib -->
-  <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/matplotlib.svg" alt="Matplotlib" width="40" height="40" />
-
-  <!-- Custom Seaborn (no official icon, use fallback) -->
-  <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/python.svg" alt="Seaborn (Python)" width="40" height="40" />
-</p>
-
-
 ---
 
 ## 💼 Featured Projects
