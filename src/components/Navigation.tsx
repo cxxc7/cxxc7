@@ -12,7 +12,6 @@ import {
   Star,
   Layers,
   MessageSquare,
-  ArrowBigDownRight,
 } from "lucide-react";
 
 const matrixWords = [
@@ -73,13 +72,15 @@ const Navigation = () => {
   };
 
   const toggleMatrixRain = () => {
-    if (showMatrix) return;
+    if (showMatrix) return; // prevent overlapping triggers
 
     setShowMatrix(true);
     setFadeOut(false);
 
+    // Stop after 4s
     setTimeout(() => {
       setFadeOut(true);
+      // Fully hide after fade-out duration (800ms match with CSS)
       setTimeout(() => setShowMatrix(false), 1000);
     }, 4000);
   };
@@ -91,8 +92,8 @@ const Navigation = () => {
     const ctx = canvas.getContext("2d")!;
     const navbarH = 64;
     const fontSize = 20;
-    const spacing = fontSize * 8;
-    const lineHeight = fontSize * 2.6;
+    const spacing = fontSize * 8; // horizontal column spacing
+    const lineHeight = fontSize * 2.4;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -105,7 +106,7 @@ const Navigation = () => {
     const drops = Array(columns).fill(0).map(() => Math.floor(Math.random() * 50));
 
     const draw = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.03)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = "rgba(0, 255, 0, 0.6)";
@@ -123,7 +124,6 @@ const Navigation = () => {
 
       animRef.current = requestAnimationFrame(draw);
     };
-
     draw();
 
     return () => {
@@ -134,33 +134,24 @@ const Navigation = () => {
 
   return (
     <>
+      {/* ── Top Navbar ── */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-slate-900/90 backdrop-blur-md shadow-xl border-b border-blue-500/20"
           : "bg-transparent"
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4 relative">
-            {/* NNM Logo */}
-            <div className="relative group">
-              <button
-                onClick={toggleMatrixRain}
-                aria-label="Toggle Matrix Rain"
-                className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r
-                           from-blue-400 via-cyan-400 to-teal-400 hover:animate-glow
-                           transition-transform duration-200 active:scale-95 hover:scale-105"
-              >
-                NNM
-              </button>
-              {/* Curved Arrow */}
-              <ArrowBigDownRight
-                className="absolute -left-8 -top-3 text-blue-400 opacity-70 hidden md:block
-                           group-hover:animate-bounce transition-transform duration-1000"
-                size={20}
-              />
-            </div>
+          <div className="flex justify-between items-center py-4">
+            <button
+              onClick={toggleMatrixRain}
+              aria-label="Toggle Matrix Rain"
+              className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r
+                         from-blue-400 via-cyan-400 to-teal-400 hover:animate-glow
+                         transition-transform duration-200 active:scale-95 hover:scale-105"
+            >
+              NNM
+            </button>
 
-            {/* Desktop Menu */}
             <div className="hidden md:flex space-x-6 items-center">
               {navItems.map((item) => (
                 <button
@@ -181,7 +172,6 @@ const Navigation = () => {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
             <button
               className="md:hidden text-gray-300 hover:text-blue-400 transition-colors"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -192,7 +182,7 @@ const Navigation = () => {
         </div>
       </nav>
 
-      {/* Mobile Sidebar */}
+      {/* ── Mobile Sidebar ── */}
       <div className={`fixed top-0 left-0 h-full w-64 bg-slate-900/95 backdrop-blur-md pt-20 px-6 pb-6
                        transform transition-transform duration-300 z-40 border-r border-blue-500/20 md:hidden
                        ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}`}>
@@ -224,7 +214,7 @@ const Navigation = () => {
         />
       )}
 
-      {/* Matrix Rain */}
+      {/* ── Matrix Rain Canvas ── */}
       {showMatrix && (
         <canvas
           ref={canvasRef}
