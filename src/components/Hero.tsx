@@ -23,7 +23,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <div className="text-center lg:text-left animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-20">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-18">
               <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
                 Nikhilesh Marali
               </span>
@@ -106,7 +106,7 @@ const Hero = () => {
         </div>
 
         {/* Scroll down indicator */}
-        <div className="text-center mt-16 lg:mt-4">
+        <div className="text-center mt-16 lg:mt-2">
           <button
             onClick={scrollToNext}
             className="animate-bounce text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110"
