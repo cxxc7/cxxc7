@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Send, Mail, Github, Linkedin, MapPin } from "lucide-react";
+import { Mail, Github, Linkedin, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -35,16 +35,16 @@ const Contact = () => {
     <section id="contact" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent animate-fade-in">
             Get In Touch
           </h2>
-          <p className="text-gray-400 text-lg">Let's connect and build something amazing together</p>
+          <p className="text-gray-400 text-lg animate-fade-in delay-200">Let's connect and build something amazing together</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
-          <div className="space-y-8">
-            <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50">
+          <div className="space-y-8 animate-slide-up delay-300">
+            <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/25">
               <h3 className="text-2xl font-semibold text-white mb-6">Let's Connect</h3>
               <p className="text-gray-300 mb-8 leading-relaxed">
                 I'm always open to discussing new opportunities, interesting projects, 
@@ -53,7 +53,7 @@ const Contact = () => {
 
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
                     <Mail size={20} className="text-white" />
                   </div>
                   <div>
@@ -63,7 +63,7 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center">
                     <MapPin size={20} className="text-white" />
                   </div>
                   <div>
@@ -80,7 +80,7 @@ const Contact = () => {
                     href="https://github.com/cxxc7" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-slate-600 transition-all duration-300"
+                    className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25"
                   >
                     <Github size={18} />
                   </a>
@@ -88,7 +88,7 @@ const Contact = () => {
                     href="https://linkedin.com/in/nikhileshmarali" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-blue-400 hover:bg-slate-600 transition-all duration-300"
+                    className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-blue-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-cyan-500/25"
                   >
                     <Linkedin size={18} />
                   </a>
@@ -97,60 +97,31 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50">
-            <h3 className="text-2xl font-semibold text-white mb-6">Send a Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <Input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="bg-slate-700/50 border-slate-600 text-white placeholder-gray-400 focus:border-blue-400"
-                />
+          {/* Simple Contact Info without form */}
+          <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/25 animate-slide-up delay-400">
+            <h3 className="text-2xl font-semibold text-white mb-6">Connect With Me</h3>
+            <div className="space-y-6">
+              <div className="p-4 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all duration-300">
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">Professional</h4>
+                <p className="text-gray-300">Open to internships, collaborations, and full-time opportunities in web development and AI/ML.</p>
               </div>
               
-              <div>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="bg-slate-700/50 border-slate-600 text-white placeholder-gray-400 focus:border-blue-400"
-                />
+              <div className="p-4 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all duration-300">
+                <h4 className="text-lg font-semibold text-cyan-400 mb-2">Projects</h4>
+                <p className="text-gray-300">Interested in contributing to open source projects and building innovative solutions.</p>
               </div>
               
-              <div>
-                <Textarea
-                  name="message"
-                  placeholder="Your Message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="bg-slate-700/50 border-slate-600 text-white placeholder-gray-400 focus:border-blue-400 resize-none"
-                />
+              <div className="p-4 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all duration-300">
+                <h4 className="text-lg font-semibold text-blue-300 mb-2">Learning</h4>
+                <p className="text-gray-300">Always eager to learn new technologies and share knowledge with the community.</p>
               </div>
-              
-              <Button 
-                type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105"
-              >
-                <Send size={18} className="mr-2" />
-                Send Message
-              </Button>
-            </form>
+            </div>
           </div>
         </div>
 
         {/* Footer */}
         <div className="text-center mt-16 pt-8 border-t border-slate-700/50">
-          <p className="text-gray-400">
+          <p className="text-gray-400 animate-fade-in delay-500">
             Built with ❤️ using React and Tailwind CSS · Nikhilesh Marali © 2024
           </p>
         </div>
