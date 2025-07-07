@@ -23,12 +23,11 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <div className="text-center lg:text-left animate-fade-in ml-6">
-           <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-20 whitespace-nowrap">
-            <span className="cursor-pointer bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent transition-all duration-300 hover:brightness-125"
-              style={{textShadow: '0 0 10px #60a5fa, 0 0 20px #60a5fa',}}>
-              Nikhilesh N Marali
-            </span>
-           </h1>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-20 whitespace-nowrap">
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
+                Nikhilesh N Marali
+              </span>
+            </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 mb-4">
               Information Science Student • Student Developer • Passionate All-Rounder • Creative Thinker • Collaborative Team Player • AI Explorer
@@ -78,7 +77,7 @@ const Hero = () => {
                 href="https://www.linkedin.com/in/nikhilesh-marali-215136315/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-[40px] h-[40px] bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                className="w-[42px] h-[42px] bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
               >
                 <Linkedin size={30} className="text-[#0077B5]" />
               </a>
@@ -91,7 +90,7 @@ const Hero = () => {
                 <img
                   src="/gmail-icon.svg"
                   alt="Gmail"
-                  className="w-[24px] h-[24px]"
+                  className="w-[23px] h-[23px]"
                 />
               </a>
             </div>
