@@ -22,7 +22,7 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
-          <div className="text-center lg:text-left animate-fade-in">
+          <div className="text-center lg:text-left animate-fade-in ml-6">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-20">
               <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
                 Nikhilesh Marali
@@ -97,7 +97,7 @@ const Hero = () => {
           </div>
 
           {/* Right Column - Profile Image */}
-          <div className="flex justify-center lg:justify-end animate-fade-in delay-300">
+          <div className="flex justify-center lg:justify-end animate-fade-in delay-300 mr-6">
             <div className="relative">
               <img
                 src="/nnm_pic.png"
