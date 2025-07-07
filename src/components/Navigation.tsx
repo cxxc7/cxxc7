@@ -25,14 +25,14 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home", icon: Home },
-    { name: "About", href: "#about", icon: User },
-    { name: "Skills", href: "#skills", icon: BadgeCheck },
-    { name: "Projects", href: "#projects", icon: Folder },
-    { name: "Experience", href: "#experience", icon: Briefcase },
-    { name: "Extracurricular", href: "#extracurricular", icon: BookOpen },
-    { name: "Languages", href: "#languages", icon: Languages },
-    { name: "Contact", href: "#contact", icon: Mail },
+    { name: "Home", href: "#home", icon: Home, color: "text-blue-400" },
+    { name: "About", href: "#about", icon: User, color: "text-pink-400" },
+    { name: "Skills", href: "#skills", icon: BadgeCheck, color: "text-green-400" },
+    { name: "Projects", href: "#projects", icon: Folder, color: "text-yellow-400" },
+    { name: "Experience", href: "#experience", icon: Briefcase, color: "text-orange-400" },
+    { name: "Extracurricular", href: "#extracurricular", icon: BookOpen, color: "text-purple-400" },
+    { name: "Languages", href: "#languages", icon: Languages, color: "text-red-400" },
+    { name: "Contact", href: "#contact", icon: Mail, color: "text-cyan-400" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -43,11 +43,11 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+      className={`fixed top-4 w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-blue-500/20"
-          : "bg-transparent"
-      }`}
+          ? "bg-slate-900/95 backdrop-blur-md shadow-lg border border-blue-500/20"
+          : "bg-slate-900/70"
+      } rounded-xl`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
@@ -56,22 +56,20 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-10">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="relative text-gray-300 hover:text-blue-400 transition-all duration-300 group overflow-hidden"
+                  className="relative flex items-center space-x-2 text-gray-300 hover:text-white transition-all duration-300 group"
                 >
-                  {/* Icon background */}
-                  <span className="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity duration-300">
-                    <Icon size={48} />
-                  </span>
+                  {/* Icon with color and size */}
+                  <Icon className={`${item.color} opacity-80`} size={20} />
 
-                  {/* Text with underline */}
-                  <span className="relative z-10">
+                  {/* Text with hover underline */}
+                  <span className="relative group-hover:text-blue-400">
                     {item.name}
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300 group-hover:w-full"></span>
                   </span>
@@ -80,7 +78,7 @@ const Navigation = () => {
             })}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle */}
           <button
             className="md:hidden text-gray-300 hover:text-blue-400 transition-colors duration-300"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -91,22 +89,18 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-slate-900/95 backdrop-blur-md rounded-lg mt-2 p-4 border border-blue-500/20 space-y-2">
+          <div className="md:hidden bg-slate-900/95 backdrop-blur-md rounded-lg mt-2 p-4 border border-blue-500/20 space-y-3">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="relative block w-full text-left py-3 text-gray-300 hover:text-blue-400 transition-colors duration-300 overflow-hidden group"
+                  className="flex items-center space-x-4 w-full text-left py-3 text-gray-300 hover:text-white transition-all duration-300 group"
                 >
-                  {/* Icon background */}
-                  <span className="absolute inset-0 flex items-center justify-start pl-2 opacity-10 group-hover:opacity-20">
-                    <Icon size={40} />
-                  </span>
-
-                  {/* Text */}
-                  <span className="relative z-10 pl-12">{item.name}</span>
+                  {/* Colored icon */}
+                  <Icon className={`${item.color} opacity-80`} size={24} />
+                  <span className="group-hover:text-blue-400">{item.name}</span>
                 </button>
               );
             })}
