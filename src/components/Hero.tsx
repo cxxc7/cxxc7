@@ -1,4 +1,3 @@
-
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -9,7 +8,10 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+    >
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-float"></div>
@@ -21,59 +23,69 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <div className="text-center lg:text-left animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-10">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-14">
               <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
                 Nikhilesh Marali
               </span>
             </h1>
+
             <p className="text-xl md:text-2xl text-gray-300 mb-4">
-              Information Science Student • Student Developer • AI Explorer • Creative Thinker
+              Information Science Student • Student Developer • AI Explorer • Creative Thinker • Passionate All-Rounder
             </p>
+
             <p className="text-lg text-gray-400 max-w-2xl lg:max-w-none leading-relaxed mb-8">
-              Passionate about building smart, user-focused tools at the intersection of 
-              <span className="text-blue-400 font-semibold"> AI</span>, 
-              <span className="text-cyan-400 font-semibold"> creativity</span>, and 
+              Passionate about building smart, user-focused tools at the intersection of
+              <span className="text-blue-400 font-semibold"> AI</span>,
+              <span className="text-cyan-400 font-semibold"> creativity</span>, and
               <span className="text-blue-300 font-semibold"> impact</span>.
             </p>
 
+            {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-8">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white border-0 px-8 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25"
+              <a
+                href="https://github.com/cxxc7?tab=repositories"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white border-0 px-8 py-3 text-lg font-semibold rounded-md transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 inline-block"
               >
                 View My Work
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-slate-900 px-8 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-400/25"
+              </a>
+
+              <a
+                href="/NNM_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-slate-900 px-8 py-3 text-lg font-semibold rounded-md transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-400/25 inline-block"
               >
                 Download Resume
-              </Button>
+              </a>
             </div>
 
+            {/* Social Icons */}
             <div className="flex justify-center lg:justify-start space-x-6 mb-8">
-              <a 
-                href="https://github.com/cxxc7" 
-                target="_blank" 
+              <a
+                href="https://github.com/cxxc7"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-400/25"
               >
-                <Github size={28} />
+                <Github size={35} />
               </a>
-              <a 
-                href="https://www.linkedin.com/in/nikhilesh-marali-215136315/" 
-                target="_blank" 
+
+              <a
+                href="https://www.linkedin.com/in/nikhilesh-marali-215136315/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-cyan-400/25"
               >
-                <Linkedin size={28} />
+                <Linkedin size={35} />
               </a>
-              <a 
-                href="mailto:nikhileshmarali@gmail.com"
+
+              <a
+                href="mailto:nikhileshmarali7@gmail.com"
                 className="text-gray-400 hover:text-blue-300 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-300/25"
               >
-                <Mail size={28} />
+                <Mail size={35} />
               </a>
             </div>
           </div>
@@ -81,9 +93,11 @@ const Hero = () => {
           {/* Right Column - Profile Image */}
           <div className="flex justify-center lg:justify-end animate-fade-in delay-300">
             <div className="relative">
-              {/* Placeholder for your profile image - replace with actual image */}
-              <img src="/nnm_pic.png" alt="Nikhilesh Marali" className="w-80 h-80 md:w-96 md:h-96 rounded-full object-cover border-4 border-blue-400/30" />
-              {/* Decorative elements around the image */}
+              <img
+                src="/nnm_pic.png"
+                alt="Nikhilesh Marali"
+                className="w-80 h-80 md:w-96 md:h-96 rounded-full object-cover border-4 border-blue-400/30"
+              />
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-400 rounded-full animate-float delay-200"></div>
               <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-cyan-400 rounded-full animate-float delay-500"></div>
             </div>
@@ -91,8 +105,8 @@ const Hero = () => {
         </div>
 
         {/* Scroll down indicator */}
-        <div className="text-center mt-16 lg:mt-10">
-          <button 
+        <div className="text-center mt-16 lg:mt-7">
+          <button
             onClick={scrollToNext}
             className="animate-bounce text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110"
           >
