@@ -108,6 +108,11 @@ export default {
             textShadow: "0 0 20px #06b6d4, 0 0 30px #3b82f6",
           },
         },
+        // 👇 bounce-sm added here
+        "bounce-sm": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-4px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -118,6 +123,8 @@ export default {
         float: "float 3s ease-in-out infinite",
         "slide-down": "slide-down 0.5s ease-out",
         glow: "glow 2s ease-in-out infinite",
+        // 👇 bounce-sm added here
+        "bounce-sm": "bounce-sm 0.3s ease-in-out",
       },
     },
   },
