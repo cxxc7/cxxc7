@@ -26,22 +26,21 @@ const matrixWords = [
   "Football", "Badminton", "Run Co", "Travel", "Music",
 ];
 
-/* ── Component ──────────────────────────────── */
 const Navigation = () => {
-  /* navbar / menu state */
-  const [isScrolled,      setIsScrolled]      = useState(false);
-  const [isMobileOpen,    setIsMobileOpen]    = useState(false);
-  const [activeSection,   setActiveSection]   = useState("");
+  /* ── layout / nav state ── */
+  const [isScrolled,      setIsScrolled]    = useState(false);
+  const [isMobileOpen,    setIsMobileOpen]  = useState(false);
+  const [activeSection,   setActiveSection] = useState("");
 
-  /* matrix-rain state */
-  const [showMatrix,      setShowMatrix]      = useState(false);
-  const [fadeOut,         setFadeOut]         = useState(false);
+  /* ── matrix-rain state ── */
+  const [showMatrix,      setShowMatrix]    = useState(false);
+  const [fadeOut,         setFadeOut]       = useState(false);
   const canvasRef                              = useRef<HTMLCanvasElement|null>(null);
   const animRef                                = useRef<number|null>(null);
 
   const iconSize = 24;
 
-  /* nav items */
+  /* ── nav items ── */
   const navItems = [
     { name:"Home",            href:"#home",            icon:<Home          size={iconSize} className="mr-2" /> },
     { name:"About",           href:"#about",           icon:<User          size={iconSize} className="mr-2" /> },
@@ -53,7 +52,7 @@ const Navigation = () => {
     { name:"Contact",         href:"#contact",         icon:<Mail          size={iconSize} className="mr-2" /> },
   ];
 
-  /* ── scroll spy for active link & navbar bg ── */
+  /* ── scroll spy for nav highlight & bg ── */
   useEffect(() => {
     const onScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -61,7 +60,7 @@ const Navigation = () => {
       for (const item of navItems) {
         const el = document.querySelector(item.href);
         if (el) {
-          const top = (el as HTMLElement).offsetTop;
+          const top    = (el as HTMLElement).offsetTop;
           const bottom = top + (el as HTMLElement).offsetHeight;
           if (pos >= top && pos < bottom) {
             setActiveSection(item.href);
@@ -74,81 +73,83 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* ── helper ── */
   const scrollTo = (href:string) => {
     document.querySelector(href)?.scrollIntoView({ behavior:"smooth" });
     setIsMobileOpen(false);
   };
 
-  /* ─────────────────────────────────────────────
-     Matrix-Rain: start / stop AFTER canvas mounts
-     ────────────────────────────────────────────*/
+  /* ── toggle matrix rain ── */
   const toggleMatrixRain = () => {
-    /* if already showing, begin fade-out */
-    if (showMatrix) {
+    if (showMatrix) return;          // ignore if already running
+
+    setShowMatrix(true);
+
+    // Auto-stop after 5 s
+    setTimeout(() => {
       cancelAnimationFrame(animRef.current!);
       setFadeOut(true);
-      setTimeout(() => { setShowMatrix(false); setFadeOut(false); }, 800);
-    } else {
-      /* otherwise just render the canvas; animation starts in useEffect */
-      setShowMatrix(true);
-    }
+      setTimeout(() => {
+        setShowMatrix(false);
+        setFadeOut(false);
+      }, 800);                       // fade-out duration matches CSS
+    }, 5000);
   };
 
-  /* animation effect (runs only while showMatrix true) */
+  /* ── matrix animation ── */
   useEffect(() => {
     if (!showMatrix) return;
 
-    const canvas = canvasRef.current!;
-    const ctx    = canvas.getContext("2d")!;
-    const navbarH = 64;                    // adjust if navbar taller
+    const canvas   = canvasRef.current!;
+    const ctx      = canvas.getContext("2d")!;
+    const navbarH  = 64;
     const fontSize = 18;
-    const spacing  = fontSize * 4;
+    const spacing  = fontSize * 8;     // wide spacing
+    const opacity  = 0.2;              // text opacity
 
-    /* size canvas */
-    const setSize = () => {
+    const resize = () => {
       canvas.width  = window.innerWidth;
       canvas.height = window.innerHeight - navbarH;
     };
-    setSize();
-    window.addEventListener("resize", setSize);
+    resize();
+    window.addEventListener("resize", resize);
 
-    /* columns & drops */
     const columns = Math.floor(canvas.width / spacing);
     const drops   = Array(columns).fill(1);
 
-    /* draw loop */
     const draw = () => {
-      ctx.fillStyle = "rgba(0,0,0,0.1)";
-      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";     // faint trail
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = "rgba(0,255,0,0.4)";
-      ctx.font      = `${fontSize}px monospace`;
+      ctx.fillStyle = `rgba(0, 255, 0, ${opacity})`;
+      ctx.font = `${fontSize}px monospace`;
 
-      for (let i=0;i<drops.length;i++) {
-        const word = matrixWords[Math.floor(Math.random()*matrixWords.length)];
+      for (let i = 0; i < drops.length; i++) {
+        if (Math.random() > 0.5) continue;       // 50 % density cut
+
+        const word = matrixWords[Math.floor(Math.random() * matrixWords.length)];
         const x    = i * spacing;
         const y    = drops[i] * fontSize;
+
         ctx.fillText(word, x, y);
 
-        if (y > canvas.height && Math.random() > 0.95) drops[i] = 0;
+        if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
         drops[i]++;
       }
+
       animRef.current = requestAnimationFrame(draw);
     };
     draw();
 
-    /* cleanup on unmount / toggle off */
     return () => {
-      window.removeEventListener("resize", setSize);
+      window.removeEventListener("resize", resize);
       if (animRef.current) cancelAnimationFrame(animRef.current);
     };
   }, [showMatrix]);
 
-  /* ── JSX ───────────────────────────────────── */
+  /* ── JSX ── */
   return (
     <>
-      {/* ── Navbar ───────────────────────────── */}
+      {/* Navbar */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-slate-900/90 backdrop-blur-md shadow-xl border-b border-blue-500/20"
@@ -156,24 +157,25 @@ const Navigation = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            {/* NNM logo / toggle button */}
+            {/* Logo (toggle) */}
             <button
               onClick={toggleMatrixRain}
               aria-label="Toggle Matrix Rain"
-              className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r
-                         from-blue-400 via-cyan-400 to-teal-400 hover:animate-glow
-                         transition-transform duration-200 active:scale-95 hover:scale-105"
+              className="text-2xl font-extrabold text-transparent bg-clip-text
+                         bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400
+                         hover:animate-glow transition-transform duration-200
+                         active:scale-95 hover:scale-105"
             >
               NNM
             </button>
 
-            {/* Desktop menu */}
+            {/* Desktop links */}
             <div className="hidden md:flex space-x-6 items-center">
-              {navItems.map((i) => (
+              {navItems.map(i => (
                 <button
                   key={i.name}
                   onClick={() => scrollTo(i.href)}
-                  className={`flex items-center text-base font-medium transition-all relative group ${
+                  className={`flex items-center text-base font-medium relative group ${
                     activeSection === i.href
                       ? "text-blue-400"
                       : "text-gray-300 hover:text-blue-400"
@@ -188,9 +190,9 @@ const Navigation = () => {
               ))}
             </div>
 
-            {/* Mobile menu button */}
+            {/* Mobile toggle */}
             <button
-              className="md:hidden text-gray-300 hover:text-blue-400 transition-colors"
+              className="md:hidden text-gray-300 hover:text-blue-400"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
             >
               {isMobileOpen ? <X size={28}/> : <Menu size={28}/> }
@@ -199,7 +201,7 @@ const Navigation = () => {
         </div>
       </nav>
 
-      {/* ── Mobile sidebar ───────────────────── */}
+      {/* Mobile sidebar */}
       <div className={`fixed top-0 left-0 h-full w-64 bg-slate-900/95 backdrop-blur-md pt-20 px-6 pb-6
                        transform transition-transform duration-300 z-40 border-r border-blue-500/20 md:hidden
                        ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}`}>
@@ -210,29 +212,33 @@ const Navigation = () => {
           </button>
         </div>
         <div className="space-y-4">
-          {navItems.map(i=>(
+          {navItems.map(i => (
             <button key={i.name}
-              onClick={()=>scrollTo(i.href)}
+              onClick={() => scrollTo(i.href)}
               className={`flex items-center text-base w-full text-left text-gray-300 hover:text-blue-400
-                         ${activeSection===i.href?"text-blue-400":""}`}>
+                         ${activeSection === i.href ? "text-blue-400" : ""}`}>
               {i.icon}{i.name}
             </button>
           ))}
         </div>
       </div>
 
-      {/* backdrop when sidebar open */}
+      {/* Backdrop for sidebar */}
       {isMobileOpen && (
         <div className="fixed inset-0 bg-black/50 z-30 md:hidden" onClick={()=>setIsMobileOpen(false)}/>
       )}
 
-      {/* ── Matrix rain canvas ───────────────── */}
+      {/* Matrix Rain Canvas */}
       {showMatrix && (
         <canvas
           ref={canvasRef}
           className={`fixed left-0 top-16 w-screen h-[calc(100vh-4rem)] z-[40] pointer-events-none
-                      transition-opacity duration-700 ${fadeOut?"opacity-0":"opacity-100"}`}
-          style={{ backdropFilter:"blur(2px)", WebkitBackdropFilter:"blur(2px)" }}
+                      transition-opacity duration-700 ${fadeOut ? "opacity-0" : "opacity-100"}`}
+          style={{
+            backdropFilter: "blur(2px)",
+            WebkitBackdropFilter: "blur(2px)",
+            backgroundColor: "rgba(0,0,0,0.05)", // faint overlay
+          }}
         />
       )}
     </>
