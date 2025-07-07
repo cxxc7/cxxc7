@@ -14,239 +14,225 @@ import {
   MessageSquare,
 } from "lucide-react";
 
-// Words for Matrix Rain
+/* ── Words for Matrix Rain ───────────────────── */
 const matrixWords = [
-  // Identity & Sections
   "Nikhilesh", "Marali",
-
-  // Tech Stack
   "React", "Next.js", "TypeScript", "JavaScript", "Tailwind", "shadcn/ui",
   "FastAPI", "Node.js", "Express.js", "REST", "Supabase", "MongoDB", "MySQL",
-  "Git", "GitHub", "Docker", "VS Code","Python","Java","C",
-  "C++","Figma","Docker","Render","Vercel",
-
-  // AI / ML
+  "Git", "GitHub", "Docker", "VS Code", "Python", "Java", "C", "C++",
+  "Figma", "Render", "Vercel",
   "PyTorch", "BERT", "Librosa", "OpenAI", "CrewAI",
-
-  // Featured Projects
   "AlgoAce", "Graphos", "KeyShark", "DFlix",
-
-  // Extras
   "Football", "Badminton", "Run Co", "Travel", "Music",
 ];
 
+/* ── Component ──────────────────────────────── */
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-  const [showMatrix, setShowMatrix] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const animationRef = useRef<number | null>(null);
+  /* navbar / menu state */
+  const [isScrolled,      setIsScrolled]      = useState(false);
+  const [isMobileOpen,    setIsMobileOpen]    = useState(false);
+  const [activeSection,   setActiveSection]   = useState("");
+
+  /* matrix-rain state */
+  const [showMatrix,      setShowMatrix]      = useState(false);
+  const [fadeOut,         setFadeOut]         = useState(false);
+  const canvasRef                              = useRef<HTMLCanvasElement|null>(null);
+  const animRef                                = useRef<number|null>(null);
 
   const iconSize = 24;
 
+  /* nav items */
   const navItems = [
-    { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-2" /> },
-    { name: "About", href: "#about", icon: <User size={iconSize} className="mr-2" /> },
-    { name: "Skills", href: "#skills", icon: <Code size={iconSize} className="mr-2" /> },
-    { name: "Projects", href: "#projects", icon: <Layers size={iconSize} className="mr-2" /> },
-    { name: "Experience", href: "#experience", icon: <Briefcase size={iconSize} className="mr-2" /> },
-    { name: "Extracurricular", href: "#extracurricular", icon: <Star size={iconSize} className="mr-2" /> },
-    { name: "Languages", href: "#languages", icon: <MessageSquare size={iconSize} className="mr-2" /> },
-    { name: "Contact", href: "#contact", icon: <Mail size={iconSize} className="mr-2" /> },
+    { name:"Home",            href:"#home",            icon:<Home          size={iconSize} className="mr-2" /> },
+    { name:"About",           href:"#about",           icon:<User          size={iconSize} className="mr-2" /> },
+    { name:"Skills",          href:"#skills",          icon:<Code          size={iconSize} className="mr-2" /> },
+    { name:"Projects",        href:"#projects",        icon:<Layers        size={iconSize} className="mr-2" /> },
+    { name:"Experience",      href:"#experience",      icon:<Briefcase     size={iconSize} className="mr-2" /> },
+    { name:"Extracurricular", href:"#extracurricular", icon:<Star          size={iconSize} className="mr-2" /> },
+    { name:"Languages",       href:"#languages",       icon:<MessageSquare size={iconSize} className="mr-2" /> },
+    { name:"Contact",         href:"#contact",         icon:<Mail          size={iconSize} className="mr-2" /> },
   ];
 
+  /* ── scroll spy for active link & navbar bg ── */
   useEffect(() => {
-    const handleScroll = () => {
+    const onScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      const scrollPosition = window.scrollY + 100;
-
-      for (let item of navItems) {
+      const pos = window.scrollY + 100;
+      for (const item of navItems) {
         const el = document.querySelector(item.href);
         if (el) {
-          const offsetTop = (el as HTMLElement).offsetTop;
-          const offsetBottom = offsetTop + (el as HTMLElement).offsetHeight;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+          const top = (el as HTMLElement).offsetTop;
+          const bottom = top + (el as HTMLElement).offsetHeight;
+          if (pos >= top && pos < bottom) {
             setActiveSection(item.href);
             break;
           }
         }
       }
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-    setIsMobileMenuOpen(false);
+  /* ── helper ── */
+  const scrollTo = (href:string) => {
+    document.querySelector(href)?.scrollIntoView({ behavior:"smooth" });
+    setIsMobileOpen(false);
   };
 
+  /* ─────────────────────────────────────────────
+     Matrix-Rain: start / stop AFTER canvas mounts
+     ────────────────────────────────────────────*/
   const toggleMatrixRain = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const navbarHeight = 64;
-
+    /* if already showing, begin fade-out */
     if (showMatrix) {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-        animationRef.current = null;
-      }
+      cancelAnimationFrame(animRef.current!);
       setFadeOut(true);
-      setTimeout(() => {
-        setShowMatrix(false);
-        setFadeOut(false);
-      }, 800);
-      return;
+      setTimeout(() => { setShowMatrix(false); setFadeOut(false); }, 800);
+    } else {
+      /* otherwise just render the canvas; animation starts in useEffect */
+      setShowMatrix(true);
     }
+  };
 
-    setShowMatrix(true);
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight - navbarHeight;
+  /* animation effect (runs only while showMatrix true) */
+  useEffect(() => {
+    if (!showMatrix) return;
 
-    const words = matrixWords;
+    const canvas = canvasRef.current!;
+    const ctx    = canvas.getContext("2d")!;
+    const navbarH = 64;                    // adjust if navbar taller
     const fontSize = 18;
-    const spacing = fontSize * 4;
+    const spacing  = fontSize * 4;
+
+    /* size canvas */
+    const setSize = () => {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight - navbarH;
+    };
+    setSize();
+    window.addEventListener("resize", setSize);
+
+    /* columns & drops */
     const columns = Math.floor(canvas.width / spacing);
-    const drops = new Array(columns).fill(1);
+    const drops   = Array(columns).fill(1);
 
-    function draw() {
-      if (!ctx) return;
+    /* draw loop */
+    const draw = () => {
+      ctx.fillStyle = "rgba(0,0,0,0.1)";
+      ctx.fillRect(0,0,canvas.width,canvas.height);
 
-      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "rgba(0,255,0,0.4)";
+      ctx.font      = `${fontSize}px monospace`;
 
-      ctx.fillStyle = "rgba(0, 255, 0, 0.4)";
-      ctx.font = `${fontSize}px monospace`;
-
-      for (let i = 0; i < drops.length; i++) {
-        const word = words[Math.floor(Math.random() * words.length)];
-        const x = i * spacing;
-        const y = drops[i] * fontSize;
-
+      for (let i=0;i<drops.length;i++) {
+        const word = matrixWords[Math.floor(Math.random()*matrixWords.length)];
+        const x    = i * spacing;
+        const y    = drops[i] * fontSize;
         ctx.fillText(word, x, y);
 
-        if (y > canvas.height && Math.random() > 0.95) {
-          drops[i] = 0;
-        }
-
+        if (y > canvas.height && Math.random() > 0.95) drops[i] = 0;
         drops[i]++;
       }
-
-      animationRef.current = requestAnimationFrame(draw);
-    }
-
+      animRef.current = requestAnimationFrame(draw);
+    };
     draw();
-  };
 
+    /* cleanup on unmount / toggle off */
+    return () => {
+      window.removeEventListener("resize", setSize);
+      if (animRef.current) cancelAnimationFrame(animRef.current);
+    };
+  }, [showMatrix]);
+
+  /* ── JSX ───────────────────────────────────── */
   return (
     <>
-      <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-500 animate-slide-down ${
-          isScrolled
-            ? "bg-slate-900/90 backdrop-blur-md shadow-xl border-b border-blue-500/20"
-            : "bg-transparent"
-        }`}
-      >
+      {/* ── Navbar ───────────────────────────── */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        isScrolled
+          ? "bg-slate-900/90 backdrop-blur-md shadow-xl border-b border-blue-500/20"
+          : "bg-transparent"
+      }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
+            {/* NNM logo / toggle button */}
             <button
               onClick={toggleMatrixRain}
               aria-label="Toggle Matrix Rain"
-              className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 hover:animate-glow focus:outline-none transition-transform duration-200 active:scale-95 hover:scale-105"
+              className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r
+                         from-blue-400 via-cyan-400 to-teal-400 hover:animate-glow
+                         transition-transform duration-200 active:scale-95 hover:scale-105"
             >
               NNM
             </button>
 
-            {/* Desktop Menu */}
+            {/* Desktop menu */}
             <div className="hidden md:flex space-x-6 items-center">
-              {navItems.map((item) => (
+              {navItems.map((i) => (
                 <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className={`flex items-center text-base font-medium transition-all duration-300 relative group ${
-                    activeSection === item.href
+                  key={i.name}
+                  onClick={() => scrollTo(i.href)}
+                  className={`flex items-center text-base font-medium transition-all relative group ${
+                    activeSection === i.href
                       ? "text-blue-400"
                       : "text-gray-300 hover:text-blue-400"
-                  } hover:animate-bounce-sm`}
+                  }`}
                 >
-                  {item.icon}
-                  <span>{item.name}</span>
-                  <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300 ${
-                      activeSection === item.href ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                  ></span>
+                  {i.icon}
+                  <span>{i.name}</span>
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r
+                                   from-blue-400 to-cyan-400 transition-all
+                                   ${activeSection === i.href ? "w-full" : "w-0 group-hover:w-full"}`} />
                 </button>
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile menu button */}
             <button
-              className="md:hidden text-gray-300 hover:text-blue-400 transition-colors duration-300"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden text-gray-300 hover:text-blue-400 transition-colors"
+              onClick={() => setIsMobileOpen(!isMobileOpen)}
             >
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {isMobileOpen ? <X size={28}/> : <Menu size={28}/> }
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Sidebar */}
-      <div
-        className={`fixed top-0 left-0 h-full w-64 bg-slate-900/95 backdrop-blur-md pt-20 px-6 pb-6 transform transition-transform duration-300 ease-in-out z-40 border-r border-blue-500/20 md:hidden ${
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
+      {/* ── Mobile sidebar ───────────────────── */}
+      <div className={`fixed top-0 left-0 h-full w-64 bg-slate-900/95 backdrop-blur-md pt-20 px-6 pb-6
+                       transform transition-transform duration-300 z-40 border-r border-blue-500/20 md:hidden
+                       ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}`}>
         <div className="flex justify-between items-center mb-6">
-          <div className="text-xl font-bold text-blue-400">Menu</div>
-          <button
-            className="text-gray-300 hover:text-blue-400"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            <X size={28} />
+          <span className="text-xl font-bold text-blue-400">Menu</span>
+          <button className="text-gray-300 hover:text-blue-400" onClick={()=>setIsMobileOpen(false)}>
+            <X size={28}/>
           </button>
         </div>
         <div className="space-y-4">
-          {navItems.map((item) => (
-            <button
-              key={item.name}
-              onClick={() => scrollToSection(item.href)}
-              className={`flex items-center text-base w-full text-left text-gray-300 hover:text-blue-400 transition duration-200 hover:animate-bounce-sm ${
-                activeSection === item.href ? "text-blue-400" : ""
-              }`}
-            >
-              {item.icon}
-              {item.name}
+          {navItems.map(i=>(
+            <button key={i.name}
+              onClick={()=>scrollTo(i.href)}
+              className={`flex items-center text-base w-full text-left text-gray-300 hover:text-blue-400
+                         ${activeSection===i.href?"text-blue-400":""}`}>
+              {i.icon}{i.name}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Backdrop overlay when sidebar is open */}
-      {isMobileMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-30 md:hidden"
-          onClick={() => setIsMobileMenuOpen(false)}
-        ></div>
+      {/* backdrop when sidebar open */}
+      {isMobileOpen && (
+        <div className="fixed inset-0 bg-black/50 z-30 md:hidden" onClick={()=>setIsMobileOpen(false)}/>
       )}
 
-      {/* Matrix Canvas */}
+      {/* ── Matrix rain canvas ───────────────── */}
       {showMatrix && (
         <canvas
           ref={canvasRef}
-          className={`fixed left-0 top-16 w-screen h-[calc(100vh-4rem)] z-[40] pointer-events-none transition-opacity duration-700 ${
-            fadeOut ? "opacity-0" : "opacity-100"
-          }`}
-          style={{
-            backdropFilter: "blur(2px)",
-            WebkitBackdropFilter: "blur(2px)",
-          }}
+          className={`fixed left-0 top-16 w-screen h-[calc(100vh-4rem)] z-[40] pointer-events-none
+                      transition-opacity duration-700 ${fadeOut?"opacity-0":"opacity-100"}`}
+          style={{ backdropFilter:"blur(2px)", WebkitBackdropFilter:"blur(2px)" }}
         />
       )}
     </>
