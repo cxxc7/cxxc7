@@ -8,7 +8,7 @@ const Hero = () => {
 
   useEffect(() => {
     const fullName = "Nikhilesh N Marali";
-    const firstNameEnd = 9;
+    const firstNameEnd = 9; // index after 'Nikhilesh'
     const typeSpeed = 120;
     const pauseAfterFirstName = 1000;
     const initialDelay = 500;
@@ -18,18 +18,20 @@ const Hero = () => {
 
     const type = () => {
       if (currentIndex >= fullName.length) {
-        setShowCursor(false); // typing done, hide cursor
+        setShowCursor(false);
         return;
       }
 
-      setTypedText((prev) => prev + fullName[currentIndex]);
+      const nextChar = fullName[currentIndex];
+      if (nextChar) {
+        setTypedText((prev) => prev + nextChar);
+        currentIndex++;
 
-      currentIndex++;
+        const delay =
+          currentIndex === firstNameEnd ? pauseAfterFirstName : typeSpeed;
 
-      const delay =
-        currentIndex === firstNameEnd ? pauseAfterFirstName : typeSpeed;
-
-      timeoutId = setTimeout(type, delay);
+        timeoutId = setTimeout(type, delay);
+      }
     };
 
     timeoutId = setTimeout(type, initialDelay);
@@ -143,7 +145,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Scroll down indicator */}
+        {/* Scroll Indicator */}
         <div className="text-center mt-16 lg:mt-0">
           <button
             onClick={scrollToNext}
