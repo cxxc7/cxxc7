@@ -58,7 +58,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm">Email</p>
-                    <p className="text-white">nikhilesh@example.com</p>
+                    <p className="text-white">nikhileshmarali7@gmail.com</p>
                   </div>
                 </div>
 
@@ -68,12 +68,12 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm">Location</p>
-                    <p className="text-white">Available for Remote Work</p>
+                    <p className="text-white">Benagaluru - Available for Remote Work</p>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-8 pt-8 border-t border-slate-700/50">
+              <div className="mt-5 pt-8 border-t border-slate-700/50">
                 <p className="text-gray-400 mb-4">Follow me on</p>
                 <div className="flex space-x-4">
                   <a 
@@ -82,15 +82,15 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25"
                   >
-                    <Github size={18} />
+                    <Github size={40} />
                   </a>
                   <a 
-                    href="https://linkedin.com/in/nikhileshmarali" 
+                    href="https://www.linkedin.com/in/nikhilesh-marali-215136315/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-blue-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-cyan-500/25"
                   >
-                    <Linkedin size={18} />
+                    <Linkedin size={40} />
                   </a>
                 </div>
               </div>
