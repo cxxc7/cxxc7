@@ -2,6 +2,10 @@
   Hey there 👋, I'm <span style="color:#00BFFF;">Nikhilesh Marali</span>
 </h1>
 
+<h3 align="center">
+  <a href="https://nnm-portfolio.lovable.app/" target="_blank">🌐 Check out my portfolio</a>
+</h3>
+
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=1000&center=true&vCenter=true&width=500&lines=Student+Developer+👨‍💻;ML+%26+AI+Explorer+🤖;DSA+Enthusiast+⚙️;Creative+Thinker+🎯;Open+Source+Contributor+💻" alt="Typing SVG" />
 </p>
@@ -30,6 +34,7 @@
 - 🧪 Currently exploring LLMs, Agentic AI systems, and multimodal learning
 - 🚀 Career goal: To innovate at the intersection of tech, creativity, and impact
 - 🛠️ Always curious, always building, and always learning
+- 🌐 Portfolio: [nnm-portfolio.lovable.app](https://nnm-portfolio.lovable.app/)
 
 ---
 
@@ -176,6 +181,7 @@
   <a href="mailto:nikhileshmarali7@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
   <a href="https://www.linkedin.com/in/nikhilesh-marali-215136315/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
   <a href="https://github.com/cxxc7"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" /></a>
+  <a href="https://nnm-portfolio.lovable.app/"><img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=firefox&logoColor=white" /></a>
 </p>
 
 ---
