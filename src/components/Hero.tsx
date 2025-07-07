@@ -30,7 +30,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 mb-4">
-              Information Science Student • Student Developer • Passionate All-Rounder • Creative Thinker • AI Explorer • Collaborative Team Player
+              Information Science Student • Student Developer • Passionate All-Rounder • Creative Thinker • Collaborative Team Player • AI Explorer
             </p>
 
             <p className="text-lg text-gray-400 max-w-2xl lg:max-w-none leading-relaxed mb-8">
@@ -61,7 +61,7 @@ const Hero = () => {
             </div>
 
             {/* ✅ Updated Social Icons */}
-            <div className="flex justify-center lg:justify-start space-x-4 mb-8">
+            <div className="flex justify-center lg:justify-start space-x-4 mb-5">
               {/* GitHub */}
               <a
                 href="https://github.com/cxxc7"
