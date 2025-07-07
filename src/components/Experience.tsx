@@ -5,7 +5,7 @@ const Experience = () => {
       title: "Frontend Intern(Later Full Stack)",
       company: "Web3Onwards",
       period: "Dec 2023 - Present",
-      description: "Developed responsive web applications using React and modern frontend technologies. Collaborated with cross-functional teams to deliver high-quality user interfaces and enhance user experience.",
+      description: "Built dynamic and responsive web apps using React, focusing on intuitive user experiences. Developed a personalized movie recommendation feature with mood sliders, genre filters, and platform-based discovery to simplify content selection.",
       technologies: ["React", "JavaScript", "CSS", "HTML", "Git"],
       color: "from-blue-400 to-cyan-400"
     },
