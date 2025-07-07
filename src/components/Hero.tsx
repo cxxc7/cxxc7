@@ -1,4 +1,4 @@
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
@@ -40,7 +40,6 @@ const Hero = () => {
               <span className="text-blue-300 font-semibold"> real-world impact</span> — blending technology, design, and purposeful innovation.
             </p>
 
-
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-8">
               <a
@@ -52,41 +51,47 @@ const Hero = () => {
                 View My Work
               </a>
 
-             <a
+              <a
                 href="/NNM_Resume.pdf"
                 download="Nikhilesh_Marali_Resume.pdf"
                 className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-slate-900 px-8 py-3 text-lg font-semibold rounded-md transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-400/25 inline-block"
-               >
+              >
                 Download Resume
-             </a>
-
+              </a>
             </div>
 
             {/* Social Icons */}
-            <div className="flex justify-center lg:justify-start space-x-6 mb-8">
+            <div className="flex justify-center lg:justify-start space-x-4 mb-8">
+              {/* GitHub */}
               <a
                 href="https://github.com/cxxc7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-400/25"
+                className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
               >
-                <Github size={35} />
+                <Github size={24} className="text-black" />
               </a>
 
+              {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/in/nikhilesh-marali-215136315/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-cyan-400/25"
+                className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
               >
-                <Linkedin size={35} />
+                <Linkedin size={24} className="text-[#0077B5]" />
               </a>
 
+              {/* Gmail Icon */}
               <a
                 href="mailto:nikhileshmarali7@gmail.com"
-                className="text-gray-400 hover:text-blue-300 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-300/25"
+                className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
               >
-                <Mail size={35} />
+                <img
+                  src="/gmail-icon.svg"
+                  alt="Gmail"
+                  className="w-6 h-6"
+                />
               </a>
             </div>
           </div>
