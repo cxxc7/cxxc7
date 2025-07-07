@@ -14,7 +14,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 
-// Matrix rain word pool
+// Words for Matrix Rain
 const matrixWords = [
   // Identity & Sections
   "Nikhilesh", "Marali",
@@ -40,7 +40,9 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [showMatrix, setShowMatrix] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const animationRef = useRef<number | null>(null);
 
   const iconSize = 24;
 
@@ -82,50 +84,64 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const startMatrixRain = () => {
-    setShowMatrix(true);
-
+  const toggleMatrixRain = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    const navbarHeight = 64;
+
+    if (showMatrix) {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = null;
+      }
+      setFadeOut(true);
+      setTimeout(() => {
+        setShowMatrix(false);
+        setFadeOut(false);
+      }, 800);
+      return;
+    }
+
+    setShowMatrix(true);
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.height = window.innerHeight - navbarHeight;
 
     const words = matrixWords;
-    const fontSize = 16;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
-
-    let animationId: number;
+    const fontSize = 18;
+    const spacing = fontSize * 4;
+    const columns = Math.floor(canvas.width / spacing);
+    const drops = new Array(columns).fill(1);
 
     function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      if (!ctx) return;
+
+      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = "#0F0";
+      ctx.fillStyle = "rgba(0, 255, 0, 0.4)";
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
         const word = words[Math.floor(Math.random() * words.length)];
-        ctx.fillText(word, i * fontSize, drops[i] * fontSize);
+        const x = i * spacing;
+        const y = drops[i] * fontSize;
 
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        ctx.fillText(word, x, y);
+
+        if (y > canvas.height && Math.random() > 0.95) {
           drops[i] = 0;
         }
+
         drops[i]++;
       }
 
-      animationId = requestAnimationFrame(draw);
+      animationRef.current = requestAnimationFrame(draw);
     }
 
     draw();
-
-    setTimeout(() => {
-      cancelAnimationFrame(animationId);
-      setShowMatrix(false);
-    }, 5000);
   };
 
   return (
@@ -139,10 +155,9 @@ const Navigation = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            {/* NNM logo button with Matrix effect */}
             <button
-              onClick={startMatrixRain}
-              aria-label="Trigger Matrix Mode"
+              onClick={toggleMatrixRain}
+              aria-label="Toggle Matrix Rain"
               className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 hover:animate-glow focus:outline-none transition-transform duration-200 active:scale-95 hover:scale-105"
             >
               NNM
@@ -221,11 +236,17 @@ const Navigation = () => {
         ></div>
       )}
 
-      {/* Matrix Rain Canvas */}
+      {/* Matrix Canvas */}
       {showMatrix && (
         <canvas
           ref={canvasRef}
-          className="fixed top-0 left-0 w-screen h-screen z-[60] pointer-events-none"
+          className={`fixed left-0 top-16 w-screen h-[calc(100vh-4rem)] z-[40] pointer-events-none transition-opacity duration-700 ${
+            fadeOut ? "opacity-0" : "opacity-100"
+          }`}
+          style={{
+            backdropFilter: "blur(2px)",
+            WebkitBackdropFilter: "blur(2px)",
+          }}
         />
       )}
     </>
