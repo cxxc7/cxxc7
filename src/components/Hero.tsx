@@ -67,7 +67,7 @@ const Hero = () => {
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-300 mb-4">
+            <p className="text-xl md:text-2xl text-gray-300 mb-4 opacity-0 animate-slide-in-up">
               Information Science Student • Student Developer • Passionate All-Rounder • Creative Thinker • Collaborative Team Player • AI Explorer
             </p>
 
