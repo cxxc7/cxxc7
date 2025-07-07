@@ -49,20 +49,26 @@ const Extracurricular = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {activities.map((activity, index) => (
-            <div 
-              key={activity.title}
-              className={`bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 animate-slide-up delay-${(index + 1) * 100}`}
-            >
-              <div className="text-4xl mb-4 animate-float">{activity.icon}</div>
-              <h3 className={`text-xl font-semibold mb-4 bg-gradient-to-r ${activity.color} bg-clip-text text-transparent`}>
-                {activity.title}
-              </h3>
-              <p className="text-gray-300 leading-relaxed">
-                {activity.description}
-              </p>
-            </div>
-          ))}
+          {activities.map((activity, index) => {
+            const isLast = index === activities.length - 1;
+            return (
+              <div
+                key={activity.title}
+                className={`bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700/50 transition-all duration-500 
+                  ${isLast ? "animate-pulse shadow-lg shadow-blue-400/20 hover:shadow-blue-400/40 hover:border-blue-400" 
+                           : "hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/25"} 
+                  hover:transform hover:scale-105 animate-slide-up delay-${(index + 1) * 100}`}
+              >
+                <div className="text-4xl mb-4 animate-float">{activity.icon}</div>
+                <h3 className={`text-xl font-semibold mb-4 bg-gradient-to-r ${activity.color} bg-clip-text text-transparent`}>
+                  {activity.title}
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  {activity.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
