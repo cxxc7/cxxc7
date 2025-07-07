@@ -4,15 +4,18 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   const [typedText, setTypedText] = useState("");
+  const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
     const fullName = "Nikhilesh N Marali";
-    const firstNameEnd = 9; // After "Nikhilesh"
+    const firstNameEnd = 9;
     let currentIndex = 0;
 
-    const typeSpeed = 120; // ms per character
-    const pauseAfterFirstName = 1000; // ms pause
+    const typeSpeed = 120;
+    const pauseAfterFirstName = 1000;
     const initialDelay = 500;
+
+    let timeoutId: NodeJS.Timeout;
 
     const type = () => {
       if (currentIndex < fullName.length) {
@@ -22,13 +25,15 @@ const Hero = () => {
         const delay =
           currentIndex === firstNameEnd ? pauseAfterFirstName : typeSpeed;
 
-        setTimeout(type, delay);
+        timeoutId = setTimeout(type, delay);
+      } else {
+        setShowCursor(false); // stop blinking after done
       }
     };
 
-    const startTyping = setTimeout(type, initialDelay);
+    timeoutId = setTimeout(type, initialDelay);
 
-    return () => clearTimeout(startTyping);
+    return () => clearTimeout(timeoutId); // cleanup
   }, []);
 
   const scrollToNext = () => {
@@ -41,7 +46,7 @@ const Hero = () => {
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      {/* Animated background elements */}
+      {/* Background Animation */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-float"></div>
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl animate-float delay-300"></div>
@@ -50,12 +55,12 @@ const Hero = () => {
 
       <div className="max-w-7xl mx-auto px-4 z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Content */}
+          {/* Left Column */}
           <div className="text-center lg:text-left animate-fade-in ml-6">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-20 whitespace-nowrap">
               <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
                 {typedText}
-                <span className="animate-pulse text-blue-300">|</span>
+                {showCursor && <span className="animate-pulse text-blue-300">|</span>}
               </span>
             </h1>
 
@@ -92,7 +97,6 @@ const Hero = () => {
 
             {/* Social Icons */}
             <div className="flex justify-center lg:justify-start space-x-4 mb-5">
-              {/* GitHub */}
               <a
                 href="https://github.com/cxxc7"
                 target="_blank"
@@ -102,7 +106,6 @@ const Hero = () => {
                 <Github size={30} className="text-black" />
               </a>
 
-              {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/in/nikhilesh-marali-215136315/"
                 target="_blank"
@@ -112,7 +115,6 @@ const Hero = () => {
                 <Linkedin size={30} className="text-[#0077B5]" />
               </a>
 
-              {/* Gmail */}
               <a
                 href="mailto:nikhileshmarali7@gmail.com"
                 className="w-[42px] h-[42px] bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
@@ -140,7 +142,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Scroll down indicator */}
+        {/* Scroll Indicator */}
         <div className="text-center mt-16 lg:mt-0">
           <button
             onClick={scrollToNext}
