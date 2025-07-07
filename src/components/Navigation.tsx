@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import {
   Menu,
   X,
-  Sun,
-  Moon,
   User,
   Code,
   Mail,
@@ -19,7 +17,6 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [isDark, setIsDark] = useState(true);
 
   const navItems = [
     { name: "Home", href: "#home", icon: <Star size={16} className="mr-2" /> },
@@ -59,11 +56,6 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle("dark");
-    setIsDark(!isDark);
-  };
-
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 animate-slide-down ${
@@ -100,14 +92,6 @@ const Navigation = () => {
                 ></span>
               </button>
             ))}
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="ml-4 text-gray-300 hover:text-yellow-400 transition-colors duration-300"
-              title="Toggle Theme"
-            >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -134,13 +118,6 @@ const Navigation = () => {
                 {item.name}
               </button>
             ))}
-            <button
-              onClick={toggleTheme}
-              className="w-full flex items-center text-gray-300 hover:text-yellow-400 pt-2 border-t border-slate-700"
-            >
-              {isDark ? <Sun size={20} className="mr-2" /> : <Moon size={20} className="mr-2" />}
-              Toggle Theme
-            </button>
           </div>
         )}
       </div>
