@@ -21,13 +21,13 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <div className="text-center lg:text-left animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-5">
               <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
                 Nikhilesh Marali
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-4">
-              Information Science Student • AI Explorer • Creative Thinker
+              Information Science Student • Student Developer • AI Explorer • Creative Thinker
             </p>
             <p className="text-lg text-gray-400 max-w-2xl lg:max-w-none leading-relaxed mb-8">
               Passionate about building smart, user-focused tools at the intersection of 
