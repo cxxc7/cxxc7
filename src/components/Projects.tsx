@@ -6,9 +6,9 @@ const Projects = () => {
   const projects = [
     {
       title: "AlgoAce",
-      description: "AI-powered DSA platform using FastAPI, CrewAI, Supabase, and Next.js. Helps students master data structures and algorithms with intelligent guidance.",
+      description: "AI-based DSA prep platform offering smart roadmap generation, real-time feedback, personalized learning paths, problem recommendations, and detailed explanations.",
       technologies: ["FastAPI", "CrewAI", "Supabase", "Next.js", "AI/ML"],
-      github: "https://github.com/cxxc7/AlgoAce",
+      github: "https://github.com/YasinzHyper/AlgoAce",
       demo: "#",
       gradient: "from-blue-500 to-purple-500"
     },
@@ -33,7 +33,7 @@ const Projects = () => {
       description: "Minimalist typing test application inspired by Monkeytype, featuring clean UI, real-time statistics, and performance analytics.",
       technologies: ["React", "TypeScript", "CSS", "Performance"],
       github: "https://github.com/cxxc7/keyshark",
-      demo: "#",
+      demo: "https://keyshark1.onrender.com/",
       gradient: "from-orange-500 to-red-500"
     }
   ];
