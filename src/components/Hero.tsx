@@ -82,7 +82,7 @@ const Hero = () => {
           <div className="flex justify-center lg:justify-end animate-fade-in delay-300">
             <div className="relative">
               {/* Placeholder for your profile image - replace with actual image */}
-              <img src="/your-image-name.jpg" alt="Nikhilesh Marali" className="w-80 h-80 md:w-96 md:h-96 rounded-full object-cover border-4 border-blue-400/30" />
+              <img src="/nnm_pic.png" alt="Nikhilesh Marali" className="w-80 h-80 md:w-96 md:h-96 rounded-full object-cover border-4 border-blue-400/30" />
               {/* Decorative elements around the image */}
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-400 rounded-full animate-float delay-200"></div>
               <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-cyan-400 rounded-full animate-float delay-500"></div>
