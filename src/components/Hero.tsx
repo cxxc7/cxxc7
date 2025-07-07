@@ -21,7 +21,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <div className="text-center lg:text-left animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-5">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-10">
               <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
                 Nikhilesh Marali
               </span>
@@ -62,7 +62,7 @@ const Hero = () => {
                 <Github size={28} />
               </a>
               <a 
-                href="https://linkedin.com/in/nikhileshmarali" 
+                href="https://www.linkedin.com/in/nikhilesh-marali-215136315/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-cyan-400/25"
@@ -82,13 +82,7 @@ const Hero = () => {
           <div className="flex justify-center lg:justify-end animate-fade-in delay-300">
             <div className="relative">
               {/* Placeholder for your profile image - replace with actual image */}
-              <div className="w-80 h-80 md:w-96 md:h-96 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full border-4 border-blue-400/30 backdrop-blur-sm flex items-center justify-center">
-                <p className="text-blue-300 text-center px-8">
-                  📸 Add your profile image here!
-                  <br />
-                  <span className="text-sm text-gray-400">Upload your photo and replace this placeholder</span>
-                </p>
-              </div>
+              <img src="/your-image-name.jpg" alt="Nikhilesh Marali" className="w-80 h-80 md:w-96 md:h-96 rounded-full object-cover border-4 border-blue-400/30" />
               {/* Decorative elements around the image */}
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-400 rounded-full animate-float delay-200"></div>
               <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-cyan-400 rounded-full animate-float delay-500"></div>
@@ -97,7 +91,7 @@ const Hero = () => {
         </div>
 
         {/* Scroll down indicator */}
-        <div className="text-center mt-16 lg:mt-20">
+        <div className="text-center mt-16 lg:mt-10">
           <button 
             onClick={scrollToNext}
             className="animate-bounce text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110"
