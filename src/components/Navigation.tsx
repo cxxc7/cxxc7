@@ -29,6 +29,7 @@ const Navigation = () => {
   const [activeSection, setActiveSection] = useState("");
   const [showMatrix, setShowMatrix] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
+  const [matrixClicked, setMatrixClicked] = useState(false); // NEW
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animRef = useRef<number | null>(null);
@@ -72,15 +73,14 @@ const Navigation = () => {
   };
 
   const toggleMatrixRain = () => {
-    if (showMatrix) return; // prevent overlapping triggers
+    if (showMatrix) return;
 
+    setMatrixClicked(true); // Hide prompt after first click
     setShowMatrix(true);
     setFadeOut(false);
 
-    // Stop after 4s
     setTimeout(() => {
       setFadeOut(true);
-      // Fully hide after fade-out duration (800ms match with CSS)
       setTimeout(() => setShowMatrix(false), 1000);
     }, 4000);
   };
@@ -92,8 +92,11 @@ const Navigation = () => {
     const ctx = canvas.getContext("2d")!;
     const navbarH = 64;
     const fontSize = 20;
-    const spacing = fontSize * 8; // horizontal column spacing
+    const spacing = fontSize * 8;
     const lineHeight = fontSize * 2.4;
+
+    const fadeAlpha = 0.025;
+    const speed = 0.5;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -103,10 +106,12 @@ const Navigation = () => {
     window.addEventListener("resize", resize);
 
     const columns = Math.floor(canvas.width / spacing);
-    const drops = Array(columns).fill(0).map(() => Math.floor(Math.random() * 50));
+    const drops = Array(columns)
+      .fill(0)
+      .map(() => Math.floor(Math.random() * 50));
 
     const draw = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillStyle = `rgba(0, 0, 0, ${fadeAlpha})`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = "rgba(0, 255, 0, 0.6)";
@@ -119,7 +124,7 @@ const Navigation = () => {
         ctx.fillText(word, x, y);
 
         if (y > canvas.height && Math.random() > 0.95) drops[i] = 0;
-        else drops[i]++;
+        else drops[i] += speed;
       }
 
       animRef.current = requestAnimationFrame(draw);
@@ -142,16 +147,27 @@ const Navigation = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <button
-              onClick={toggleMatrixRain}
-              aria-label="Toggle Matrix Rain"
-              className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r
-                         from-blue-400 via-cyan-400 to-teal-400 hover:animate-glow
-                         transition-transform duration-200 active:scale-95 hover:scale-105"
-            >
-              NNM
-            </button>
+            {/* ── NNM Logo with Tooltip and Hint ── */}
+            <div className="relative flex items-center space-x-2">
+              <button
+                onClick={toggleMatrixRain}
+                title="Click to activate Matrix"
+                aria-label="Toggle Matrix Rain"
+                className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r
+                           from-blue-400 via-cyan-400 to-teal-400 hover:animate-glow
+                           transition-transform duration-200 active:scale-95 hover:scale-105"
+              >
+                NNM
+              </button>
 
+              {!matrixClicked && (
+                <span className="text-xs text-cyan-400 animate-pulse hidden sm:inline-block">
+                  ✨ Click Me
+                </span>
+              )}
+            </div>
+
+            {/* ── Desktop Nav ── */}
             <div className="hidden md:flex space-x-6 items-center">
               {navItems.map((item) => (
                 <button
@@ -172,6 +188,7 @@ const Navigation = () => {
               ))}
             </div>
 
+            {/* ── Mobile Toggle ── */}
             <button
               className="md:hidden text-gray-300 hover:text-blue-400 transition-colors"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -207,6 +224,7 @@ const Navigation = () => {
         </div>
       </div>
 
+      {/* ── Mobile Backdrop ── */}
       {isMobileOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-30 md:hidden"
