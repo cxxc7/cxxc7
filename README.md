@@ -48,9 +48,16 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Matplotlib-11557C?style=flat-square&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Seaborn-5294E2?style=flat-square&logo=python&logoColor=white" />
+  <!-- Regular skillicons -->
+  <img src="https://skillicons.dev/icons?i=plotly" />
+
+  <!-- Custom Matplotlib -->
+  <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/matplotlib.svg" alt="Matplotlib" width="40" height="40" />
+
+  <!-- Custom Seaborn (no official icon, use fallback) -->
+  <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/python.svg" alt="Seaborn (Python)" width="40" height="40" />
 </p>
+
 
 ---
 
@@ -106,8 +113,7 @@
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white)
 ![Canva](https://img.shields.io/badge/Canva-00C4CC?style=flat-square&logo=canva&logoColor=white)
 
-## 📊 Data Visualization
-
+### 📊 Data Visualization
 ![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat-square&logo=python&logoColor=white)
 ![Seaborn](https://img.shields.io/badge/Seaborn-5294E2?style=flat-square&logo=python&logoColor=white)
