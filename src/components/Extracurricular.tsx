@@ -1,4 +1,3 @@
-
 const Extracurricular = () => {
   const activities = [
     {
@@ -30,6 +29,12 @@ const Extracurricular = () => {
       description: "Avid fan of travel, movies, music, gaming, and all forms of entertainment that inspire creativity.",
       icon: "🌍",
       color: "from-purple-500 to-pink-500"
+    },
+    {
+      title: "And Many More...",
+      description: "More experiences, stories, and adventures yet to come — always exploring new passions and possibilities.",
+      icon: "✨",
+      color: "from-pink-500 to-blue-500"
     }
   ];
 
