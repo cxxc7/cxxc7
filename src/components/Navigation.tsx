@@ -1,6 +1,16 @@
-
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import {
+  Menu,
+  X,
+  Home,
+  User,
+  BadgeCheck,
+  Folder,
+  Briefcase,
+  BookOpen,
+  Languages,
+  Mail,
+} from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,14 +25,14 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Experience", href: "#experience" },
-    { name: "Extracurricular", href: "#extracurricular" },
-    { name: "Languages", href: "#languages" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "#home", icon: Home },
+    { name: "About", href: "#about", icon: User },
+    { name: "Skills", href: "#skills", icon: BadgeCheck },
+    { name: "Projects", href: "#projects", icon: Folder },
+    { name: "Experience", href: "#experience", icon: Briefcase },
+    { name: "Extracurricular", href: "#extracurricular", icon: BookOpen },
+    { name: "Languages", href: "#languages", icon: Languages },
+    { name: "Contact", href: "#contact", icon: Mail },
   ];
 
   const scrollToSection = (href: string) => {
@@ -47,16 +57,27 @@ const Navigation = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="text-gray-300 hover:text-blue-400 transition-all duration-300 relative group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300 group-hover:w-full"></span>
-              </button>
-            ))}
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
+                  className="relative text-gray-300 hover:text-blue-400 transition-all duration-300 group overflow-hidden"
+                >
+                  {/* Icon background */}
+                  <span className="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+                    <Icon size={48} />
+                  </span>
+
+                  {/* Text with underline */}
+                  <span className="relative z-10">
+                    {item.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+                  </span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Mobile Menu Button */}
@@ -70,16 +91,25 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-slate-900/95 backdrop-blur-md rounded-lg mt-2 p-4 border border-blue-500/20">
-            {navItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left py-2 text-gray-300 hover:text-blue-400 transition-colors duration-300"
-              >
-                {item.name}
-              </button>
-            ))}
+          <div className="md:hidden bg-slate-900/95 backdrop-blur-md rounded-lg mt-2 p-4 border border-blue-500/20 space-y-2">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
+                  className="relative block w-full text-left py-3 text-gray-300 hover:text-blue-400 transition-colors duration-300 overflow-hidden group"
+                >
+                  {/* Icon background */}
+                  <span className="absolute inset-0 flex items-center justify-start pl-2 opacity-10 group-hover:opacity-20">
+                    <Icon size={40} />
+                  </span>
+
+                  {/* Text */}
+                  <span className="relative z-10 pl-12">{item.name}</span>
+                </button>
+              );
+            })}
           </div>
         )}
       </div>
