@@ -30,7 +30,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 mb-4">
-              Information Science Student • Student Developer • Passionate All-Rounder • Creative Thinker • AI Explorer 
+              Information Science Student • Student Developer • Passionate All-Rounder • Creative Thinker • AI Explorer • Collaborative Team Player
             </p>
 
             <p className="text-lg text-gray-400 max-w-2xl lg:max-w-none leading-relaxed mb-8">
@@ -60,16 +60,16 @@ const Hero = () => {
               </a>
             </div>
 
-            {/* Social Icons */}
+            {/* ✅ Updated Social Icons */}
             <div className="flex justify-center lg:justify-start space-x-4 mb-8">
               {/* GitHub */}
               <a
                 href="https://github.com/cxxc7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                className="w-[48px] h-[48px] bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
               >
-                <Github size={24} className="text-black" />
+                <Github size={35} className="text-black" />
               </a>
 
               {/* LinkedIn */}
@@ -77,20 +77,20 @@ const Hero = () => {
                 href="https://www.linkedin.com/in/nikhilesh-marali-215136315/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                className="w-[48px] h-[48px] bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
               >
-                <Linkedin size={24} className="text-[#0077B5]" />
+                <Linkedin size={35} className="text-[#0077B5]" />
               </a>
 
               {/* Gmail Icon */}
               <a
                 href="mailto:nikhileshmarali7@gmail.com"
-                className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                className="w-[48px] h-[48px] bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
               >
                 <img
                   src="/gmail-icon.svg"
                   alt="Gmail"
-                  className="w-6 h-6"
+                  className="w-[28px] h-[28px]"
                 />
               </a>
             </div>
