@@ -44,8 +44,14 @@
   <img src="https://skillicons.dev/icons?i=react,nextjs,ts,js,html,css,tailwind,figma" /><br>
   <img src="https://skillicons.dev/icons?i=python,java,cpp,nodejs,express,fastapi,postman,docker,jupyter" /><br>
   <img src="https://skillicons.dev/icons?i=mongodb,mysql,firebase,supabase,git,github,githubactions" /><br>
-  <img src="https://skillicons.dev/icons?i=vercel,netlify,azure,pytorch,render" /><br>
+  <img src="https://skillicons.dev/icons?i=vercel,netlify,azure,pytorch,render,plotly" /><br>
 </p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Seaborn-5294E2?style=for-the-badge&logo=python&logoColor=white" />
+</p>
+
 
 ---
 
@@ -100,6 +106,12 @@
 ![shadcn/ui](https://img.shields.io/badge/shadcn--ui-111827?style=flat-square&logo=tailwindcss&logoColor=white)
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white)
 ![Canva](https://img.shields.io/badge/Canva-00C4CC?style=flat-square&logo=canva&logoColor=white)
+
+## 📊 Data Visualization
+
+![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat-square&logo=python&logoColor=white)
+![Seaborn](https://img.shields.io/badge/Seaborn-5294E2?style=flat-square&logo=python&logoColor=white)
 
 ### ⚙️ Backend & APIs
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
