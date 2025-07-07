@@ -24,7 +24,7 @@ const Hero = () => {
           {/* Left Column - Content */}
           <div className="text-center lg:text-left animate-fade-in ml-6">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-20 whitespace-nowrap">
-              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
+              <span className="cursor-pointer inline-block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent transition-shadow duration-300 hover:shadow-[0_0_40px_#60a5fa]">
                 Nikhilesh N Marali
               </span>
             </h1>
@@ -67,9 +67,9 @@ const Hero = () => {
                 href="https://github.com/cxxc7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-[48px] h-[48px] bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                className="w-[42px] h-[42px] bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
               >
-                <Github size={35} className="text-black" />
+                <Github size={30} className="text-black" />
               </a>
 
               {/* LinkedIn */}
@@ -77,20 +77,20 @@ const Hero = () => {
                 href="https://www.linkedin.com/in/nikhilesh-marali-215136315/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-[48px] h-[48px] bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                className="w-[40px] h-[40px] bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
               >
-                <Linkedin size={35} className="text-[#0077B5]" />
+                <Linkedin size={30} className="text-[#0077B5]" />
               </a>
 
               {/* Gmail Icon */}
               <a
                 href="mailto:nikhileshmarali7@gmail.com"
-                className="w-[48px] h-[48px] bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                className="w-[42px] h-[42px] bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
               >
                 <img
                   src="/gmail-icon.svg"
                   alt="Gmail"
-                  className="w-[28px] h-[28px]"
+                  className="w-[24px] h-[24px]"
                 />
               </a>
             </div>
