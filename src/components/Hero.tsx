@@ -102,7 +102,7 @@ const Hero = () => {
               <img
                 src="/nnm_pic.png"
                 alt="Nikhilesh Marali"
-                className="w-80 h-80 md:w-96 md:h-96 rounded-full object-cover border-4 border-blue-400/30"
+                className="w-80 h-80 md:w-96 md:h-96 rounded-full object-cover border-4 border-blue-900 shadow-[0_0_20px_#60a5fa88] hover:shadow-[0_0_40px_#60a5fa] transition-shadow duration-300"
               />
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-400 rounded-full animate-float delay-200"></div>
               <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-cyan-400 rounded-full animate-float delay-500"></div>
