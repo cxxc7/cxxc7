@@ -106,7 +106,7 @@ const Hero = () => {
         </div>
 
         {/* Scroll down indicator */}
-        <div className="text-center mt-16 lg:mt-1">
+        <div className="text-center mt-16 lg:mt-0">
           <button
             onClick={scrollToNext}
             className="animate-bounce text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110"
