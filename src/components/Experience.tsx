@@ -2,9 +2,9 @@
 const Experience = () => {
   const experiences = [
     {
-      title: "Frontend Intern",
+      title: "Frontend Intern(Later Full Stack)",
       company: "Web3Onwards",
-      period: "2024",
+      period: "Dec 2023 - Present",
       description: "Developed responsive web applications using React and modern frontend technologies. Collaborated with cross-functional teams to deliver high-quality user interfaces and enhance user experience.",
       technologies: ["React", "JavaScript", "CSS", "HTML", "Git"],
       color: "from-blue-400 to-cyan-400"
@@ -12,15 +12,15 @@ const Experience = () => {
     {
       title: "Student Developer",
       company: "Personal Projects",
-      period: "2022 - Present",
-      description: "Developing innovative projects in AI/ML, web development, and algorithm design. Focus on creating practical solutions to real-world problems.",
+      period: "2023 - Present",
+      description: "Developing innovative projects in AI/ML, web development, and algorithm design, while building a strong foundation in core computer science subjects like Operating Systems, Java, DBMS, and Computer Networks. Focused on creating practical solutions to real-world problems.",
       technologies: ["React", "Python", "AI/ML", "FastAPI"],
       color: "from-cyan-400 to-blue-500"
     },
     {
       title: "Open Source Contributor",
       company: "Various Projects",
-      period: "2023 - Present",
+      period: "2024 - Present",
       description: "Contributing to open source projects and building tools for the developer community. Focused on educational platforms and AI tools.",
       technologies: ["JavaScript", "TypeScript", "Python", "Git"],
       color: "from-blue-500 to-indigo-500"
@@ -28,9 +28,9 @@ const Experience = () => {
     {
       title: "AI Research & Development",
       company: "Academic Projects",
-      period: "2023 - Present",
+      period: "2025 - Present",
       description: "Researching multimodal emotion recognition, natural language processing, and computer vision applications.",
-      technologies: ["PyTorch", "BERT", "CNN", "Research"],
+      technologies: ["PyTorch", "BERT", "CNN", "Research","Inception-v3"],
       color: "from-indigo-500 to-purple-500"
     }
   ];
