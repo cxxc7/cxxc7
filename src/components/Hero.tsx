@@ -25,12 +25,12 @@ const Hero = () => {
           <div className="text-center lg:text-left animate-fade-in ml-6">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-20">
               <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
-                Nikhilesh Marali
+                Nikhilesh N Marali
               </span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 mb-4">
-              Information Science Student • Student Developer • AI Explorer • Passionate All-Rounder • Creative Thinker 
+              Information Science Student • Student Developer • Passionate All-Rounder • Creative Thinker • AI Explorer • Collaborative Team Player
             </p>
 
             <p className="text-lg text-gray-400 max-w-2xl lg:max-w-none leading-relaxed mb-8">
