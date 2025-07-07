@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Menu,
   X,
@@ -14,12 +14,35 @@ import {
   MessageSquare,
 } from "lucide-react";
 
+// Matrix rain word pool
+const matrixWords = [
+  // Identity & Sections
+  "Nikhilesh", "Marali",
+
+  // Tech Stack
+  "React", "Next.js", "TypeScript", "JavaScript", "Tailwind", "shadcn/ui",
+  "FastAPI", "Node.js", "Express.js", "REST", "Supabase", "MongoDB", "MySQL",
+  "Git", "GitHub", "Docker", "VS Code","Python","Java","C",
+  "C++","Figma","Docker","Render","Vercel",
+
+  // AI / ML
+  "PyTorch", "BERT", "Librosa", "OpenAI", "CrewAI",
+
+  // Featured Projects
+  "AlgoAce", "Graphos", "KeyShark", "DFlix",
+
+  // Extras
+  "Football", "Badminton", "Run Co", "Travel", "Music",
+];
+
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [showMatrix, setShowMatrix] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  const iconSize = 24; // Increased from 20 to 24
+  const iconSize = 24;
 
   const navItems = [
     { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-2" /> },
@@ -59,6 +82,52 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const startMatrixRain = () => {
+    setShowMatrix(true);
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const words = matrixWords;
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    let animationId: number;
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#0F0";
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const word = words[Math.floor(Math.random() * words.length)];
+        ctx.fillText(word, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+
+      animationId = requestAnimationFrame(draw);
+    }
+
+    draw();
+
+    setTimeout(() => {
+      cancelAnimationFrame(animationId);
+      setShowMatrix(false);
+    }, 5000);
+  };
+
   return (
     <>
       <nav
@@ -70,9 +139,14 @@ const Navigation = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 hover:animate-glow">
+            {/* NNM logo button with Matrix effect */}
+            <button
+              onClick={startMatrixRain}
+              aria-label="Trigger Matrix Mode"
+              className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 hover:animate-glow focus:outline-none transition-transform duration-200 active:scale-95 hover:scale-105"
+            >
               NNM
-            </div>
+            </button>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-6 items-center">
@@ -114,7 +188,6 @@ const Navigation = () => {
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-
         <div className="flex justify-between items-center mb-6">
           <div className="text-xl font-bold text-blue-400">Menu</div>
           <button
@@ -146,6 +219,14 @@ const Navigation = () => {
           className="fixed inset-0 bg-black/50 z-30 md:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         ></div>
+      )}
+
+      {/* Matrix Rain Canvas */}
+      {showMatrix && (
+        <canvas
+          ref={canvasRef}
+          className="fixed top-0 left-0 w-screen h-screen z-[60] pointer-events-none"
+        />
       )}
     </>
   );
