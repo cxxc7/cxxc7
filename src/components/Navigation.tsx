@@ -19,7 +19,7 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
-  const iconSize = 20;
+  const iconSize = 24; // Increased from 20 to 24
 
   const navItems = [
     { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-2" /> },
@@ -80,7 +80,7 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className={`flex items-center text-sm font-medium transition-all duration-300 relative group ${
+                  className={`flex items-center text-base font-medium transition-all duration-300 relative group ${
                     activeSection === item.href
                       ? "text-blue-400"
                       : "text-gray-300 hover:text-blue-400"
@@ -102,7 +102,7 @@ const Navigation = () => {
               className="md:hidden text-gray-300 hover:text-blue-400 transition-colors duration-300"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
@@ -120,7 +120,7 @@ const Navigation = () => {
             className="text-gray-300 hover:text-blue-400"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <X size={24} />
+            <X size={28} />
           </button>
         </div>
         <div className="space-y-4">
@@ -128,7 +128,7 @@ const Navigation = () => {
             <button
               key={item.name}
               onClick={() => scrollToSection(item.href)}
-              className={`flex items-center text-gray-300 text-base w-full text-left hover:text-blue-400 transition duration-200 hover:animate-bounce-sm ${
+              className={`flex items-center text-base w-full text-left text-gray-300 hover:text-blue-400 transition duration-200 hover:animate-bounce-sm ${
                 activeSection === item.href ? "text-blue-400" : ""
               }`}
             >
