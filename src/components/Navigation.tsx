@@ -14,7 +14,6 @@ import {
   MessageSquare,
 } from "lucide-react";
 
-/* ── Words for Matrix Rain ───────────────────── */
 const matrixWords = [
   "Nikhilesh", "Marali",
   "React", "Next.js", "TypeScript", "JavaScript", "Tailwind", "shadcn/ui",
@@ -30,7 +29,6 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-
   const [showMatrix, setShowMatrix] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -85,8 +83,8 @@ const Navigation = () => {
       setTimeout(() => {
         setShowMatrix(false);
         setFadeOut(false);
-      }, 1200); // Slower fade out
-    }, 4000); // Rain lasts 4s
+      }, 1400); // fade-out duration matches fade-in
+    }, 4000); // rain active for 4s
   };
 
   useEffect(() => {
@@ -96,7 +94,7 @@ const Navigation = () => {
     const ctx = canvas.getContext("2d")!;
     const navbarH = 64;
     const fontSize = 20;
-    const lineSpacing = fontSize * 2.2; // More vertical spacing
+    const lineSpacing = fontSize * 2.2;
     const columnSpacing = fontSize * 9;
 
     const resize = () => {
@@ -110,14 +108,14 @@ const Navigation = () => {
     const drops = Array(columns).fill(1);
 
     const draw = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.015)"; // ultra light trail
+      ctx.fillStyle = "rgba(0, 0, 0, 0.01)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = "rgba(0, 255, 0, 0.55)"; // visible but not harsh
-      ctx.font = `${fontSize}px monospace`;
+      ctx.fillStyle = "rgba(0, 255, 0, 0.55)";
+      ctx.font = `${fontSize}px ui-monospace, SFMono-Regular, Menlo, monospace`;
 
       for (let i = 0; i < drops.length; i++) {
-        if (Math.random() > 0.6) continue; // reduce density
+        if (Math.random() > 0.6) continue;
 
         const word = matrixWords[Math.floor(Math.random() * matrixWords.length)];
         const x = i * columnSpacing;
@@ -141,6 +139,7 @@ const Navigation = () => {
 
   return (
     <>
+      {/* Navbar */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-slate-900/90 backdrop-blur-md shadow-xl border-b border-blue-500/20"
@@ -188,6 +187,7 @@ const Navigation = () => {
         </div>
       </nav>
 
+      {/* Mobile Menu */}
       <div className={`fixed top-0 left-0 h-full w-64 bg-slate-900/95 backdrop-blur-md pt-20 px-6 pb-6
                        transform transition-transform duration-300 z-40 border-r border-blue-500/20 md:hidden
                        ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}`}>
@@ -209,10 +209,12 @@ const Navigation = () => {
         </div>
       </div>
 
+      {/* Backdrop */}
       {isMobileOpen && (
         <div className="fixed inset-0 bg-black/50 z-30 md:hidden" onClick={() => setIsMobileOpen(false)} />
       )}
 
+      {/* Matrix Canvas */}
       {showMatrix && (
         <canvas
           ref={canvasRef}
@@ -222,7 +224,7 @@ const Navigation = () => {
           style={{
             backdropFilter: "blur(1px)",
             WebkitBackdropFilter: "blur(1px)",
-            backgroundColor: "rgba(0, 0, 0, 0.025)",
+            backgroundColor: "rgba(0, 0, 0, 0.01)",
           }}
         />
       )}
