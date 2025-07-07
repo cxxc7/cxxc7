@@ -4,25 +4,25 @@ const Languages = () => {
     {
       name: "English",
       level: "Fluent",
-      percentage: 100,
+      percentage: 87,
       color: "from-blue-400 to-cyan-400"
     },
     {
       name: "Kannada",
       level: "Fluent",
-      percentage: 100,
+      percentage: 90,
       color: "from-cyan-400 to-blue-500"
     },
     {
       name: "Hindi",
       level: "Proficient",
-      percentage: 85,
+      percentage: 83,
       color: "from-blue-500 to-indigo-500"
     },
     {
       name: "Tulu",
       level: "Conversational",
-      percentage: 70,
+      percentage: 65,
       color: "from-indigo-500 to-purple-500"
     }
   ];
