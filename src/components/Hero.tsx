@@ -60,7 +60,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column */}
           <div className="text-center lg:text-left animate-fade-in ml-6">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-20 whitespace-nowrap">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-20 lg:whitespace-nowrap whitespace-normal">
               <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
                 {typedText}
                 {showCursor && <span className="animate-pulse text-blue-300">|</span>}
