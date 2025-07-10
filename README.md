@@ -77,7 +77,7 @@
 
 --- 
 
-### 🚀 **BuzzCall — Enterprise Push Notification Engine**  
+### 🔔 **BuzzCall — Enterprise Push Notification Engine**  
 > Professional-grade mobile notification system with native Android integration, real-time FCM delivery, and WhatsApp-style UX. Supports deep linking, badge counts, call actions, and works even when the app is killed.  
 **Tech Stack:** React, TypeScript, Java (Android), Capacitor, Firebase Cloud Messaging (FCM), Vite, Shadcn/UI  
 
@@ -95,6 +95,7 @@
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
 ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Android Studio](https://img.shields.io/badge/Android%20Studio-3DDC84?style=flat-square&logo=androidstudio&logoColor=white)
 
 ### 🌐 Frontend & UI Design
 ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
@@ -107,6 +108,12 @@
 ![shadcn/ui](https://img.shields.io/badge/shadcn--ui-111827?style=flat-square&logo=tailwindcss&logoColor=white)
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white)
 ![Canva](https://img.shields.io/badge/Canva-00C4CC?style=flat-square&logo=canva&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+
+### 📱 Mobile & Native
+![Capacitor](https://img.shields.io/badge/Capacitor-3949AB?style=flat-square&logo=capacitor&logoColor=white)
+![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=java&logoColor=white)
+![Android Studio](https://img.shields.io/badge/Android%20Studio-3DDC84?style=flat-square&logo=androidstudio&logoColor=white)
 
 ### 📊 Data Visualization
 ![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white)
