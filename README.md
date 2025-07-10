@@ -41,10 +41,12 @@
 ## 🛠️ Tech Stack
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=react,nextjs,ts,js,html,css,tailwind,figma" /><br>
+  <img src="https://skillicons.dev/icons?i=react,nextjs,ts,js,html,css,tailwind,figma,androidstudio" /><br>
   <img src="https://skillicons.dev/icons?i=python,java,cpp,nodejs,express,fastapi,postman,docker,jupyter" /><br>
   <img src="https://skillicons.dev/icons?i=mongodb,mysql,firebase,supabase,git,github,githubactions" /><br>
   <img src="https://skillicons.dev/icons?i=vercel,netlify,azure,pytorch,render,plotly" /><br>
+  <img src="https://img.shields.io/badge/Capacitor-3949AB?style=for-the-badge&logo=capacitor&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
 </p>
 
 ---
@@ -73,8 +75,13 @@
 > A modern, minimalist typing test app to help improve typing speed and accuracy.  
 **Tech Stack:** Next.js, TypeScript, Tailwind CSS, Render, LocalStorage
 
----
+--- 
 
+### 🚀 **BuzzCall — Enterprise Push Notification Engine**  
+> Professional-grade mobile notification system with native Android integration, real-time FCM delivery, and WhatsApp-style UX. Supports deep linking, badge counts, call actions, and works even when the app is killed.  
+**Tech Stack:** React, TypeScript, Java (Android), Capacitor, Firebase Cloud Messaging (FCM), Vite, Shadcn/UI  
+
+---
 ### 🎬 **DFlix@Web3onwards** *(Frontend Developer Intern)*  
 > Contributed to features like dynamic movie filtering, college collaboration dashboards, and a language selector with a responsive UI.  
 **Tech Stack:** React.js, Node.js, JavaScript, CSS, Material UI, Postman
