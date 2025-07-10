@@ -29,6 +29,14 @@ const Projects = () => {
       gradient: "from-green-500 to-emerald-500"
     },
     {
+    title: "BuzzCall",
+    description: "Enterprise-grade mobile push notification engine featuring native Android module integration, FCM support, real-time messaging, and production-ready performance.",
+    technologies: ["React", "TypeScript", "Capacitor", "Java", "Firebase"],
+    github: "https://github.com/cxxc7/buzzcall", 
+    demo: "#",
+    gradient: "from-yellow-500 to-orange-500"
+    },
+    {
       title: "KeyShark",
       description: "Minimalist typing test application inspired by Monkeytype, featuring clean UI, real-time statistics, and performance analytics.",
       technologies: ["React", "TypeScript", "CSS", "Performance"],
