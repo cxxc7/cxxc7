@@ -65,6 +65,12 @@
 
 ---
 
+### ✅ **UpTask — MERN Task Manager**  
+> A full-featured task management app with authentication, real-time updates, priority tagging, dark mode, and toast notifications.  
+**Tech Stack:** MongoDB, Express.js, React, Node.js, Redux Toolkit, Tailwind CSS
+
+---
+
 ### 🧠 **Graphos**  
 > Gamified platform to explore graph theory concepts like Euler paths, Hamiltonian circuits, and graph isomorphism.  
 **Tech Stack:** HTML, CSS, JavaScript, PowerPoint, Video Animation
