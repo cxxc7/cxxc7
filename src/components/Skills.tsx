@@ -9,6 +9,7 @@ const Skills = () => {
         { name: "TypeScript", icon: "ts" },
         { name: "JavaScript", icon: "js" },
         { name: "HTML5", icon: "html" },
+        { name: "Redux", icon: "redux" },
         { name: "CSS3", icon: "css" },
         { name: "Tailwind CSS", icon: "tailwind" },
         { name: "Figma", icon: "figma" }
