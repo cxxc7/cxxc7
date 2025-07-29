@@ -1,4 +1,3 @@
-
 import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -21,6 +20,14 @@ const Projects = () => {
       gradient: "from-purple-500 to-pink-500"
     },
     {
+      title: "UpTask",
+      description: "A full-featured MERN task management app with authentication, real-time updates, priority tagging, dark mode, and toast notifications.",
+      technologies: ["MongoDB", "Express.js", "React", "Node.js", "Redux Toolkit", "Tailwind CSS"],
+      github: "https://github.com/cxxc7/uptask", 
+      demo: "#", 
+      gradient: "from-cyan-500 to-teal-500"
+    },
+    {
       title: "Graphos",
       description: "Gamified educational platform for exploring graph theory concepts including Euler paths, Hamiltonian cycles, and various graph algorithms.",
       technologies: ["React", "JavaScript", "Graph Theory", "Education"],
@@ -29,21 +36,21 @@ const Projects = () => {
       gradient: "from-green-500 to-emerald-500"
     },
     {
-    title: "BuzzCall",
-    description: "Enterprise-grade mobile push notification engine featuring native Android module integration, FCM support, real-time messaging, and production-ready performance.",
-    technologies: ["React", "TypeScript", "Capacitor", "Java", "Firebase"],
-    github: "https://github.com/cxxc7/buzzcall", 
-    demo: "#",
-    gradient: "from-yellow-500 to-orange-500"
-    },
-    {
       title: "KeyShark",
       description: "Minimalist typing test application inspired by Monkeytype, featuring clean UI, real-time statistics, and performance analytics.",
       technologies: ["React", "TypeScript", "CSS", "Performance"],
       github: "https://github.com/cxxc7/keyshark",
       demo: "https://keyshark1.onrender.com/",
       gradient: "from-orange-500 to-red-500"
-    }
+    },
+    {
+      title: "BuzzCall",
+      description: "Enterprise-grade mobile push notification engine featuring native Android module integration, FCM support, real-time messaging, and production-ready performance.",
+      technologies: ["React", "TypeScript", "Capacitor", "Java", "Firebase"],
+      github: "https://github.com/cxxc7/buzzcall",
+      demo: "https://buzzcall.lovable.app",
+      gradient: "from-yellow-500 to-orange-500"
+    }, 
   ];
 
   return (
@@ -62,7 +69,6 @@ const Projects = () => {
               key={project.title}
               className="bg-slate-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 hover:transform hover:scale-105 group"
             >
-              {/* Project header with gradient */}
               <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
               
               <div className="p-8">
@@ -74,7 +80,6 @@ const Projects = () => {
                   {project.description}
                 </p>
 
-                {/* Technologies */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.technologies.map((tech) => (
                     <span 
@@ -86,7 +91,6 @@ const Projects = () => {
                   ))}
                 </div>
 
-                {/* Action buttons */}
                 <div className="flex space-x-4">
                   <Button 
                     variant="outline" 
