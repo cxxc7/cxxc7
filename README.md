@@ -42,9 +42,55 @@
 
 <p align="center">
   <img src="https://skillicons.dev/icons?i=react,nextjs,ts,js,html,css,tailwind,figma,androidstudio" /><br>
-  <img src="https://skillicons.dev/icons?i=python,java,cpp,nodejs,express,mongodb,mysql,firebase,supabase,docker,postman,jupyter" /><br>
-  <img src="https://skillicons.dev/icons?i=vercel,netlify,render,azure,githubactions,pytorch,plotly" /><br>
+  <img src="https://skillicons.dev/icons?i=python,java,cpp,nodejs,express,fastapi,postman,docker,jupyter" /><br>
+  <img src="https://skillicons.dev/icons?i=mongodb,mysql,firebase,supabase,git,github,githubactions" /><br>
+  <img src="https://skillicons.dev/icons?i=vercel,netlify,azure,pytorch,render,plotly" /><br>
+  <img src="https://img.shields.io/badge/Capacitor-3949AB?style=for-the-badge&logo=capacitor&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
 </p>
+
+---
+
+## 💼 Featured Projects
+
+### 🔥 **AlgoAce**  
+> AI-based DSA prep platform offering smart roadmap generation, real-time feedback, personalized learning paths, problem recommendations, and detailed explanations.  
+**Tech Stack:** FastAPI, CrewAI, Supabase, OpenAI, Next.js 14
+
+---
+
+### 🎙️ **Multimodal Emotion Recognition**  
+> Combines BERT and CNN to detect emotions from both audio and text inputs.  
+**Tech Stack:** Python, Librosa, BERT, PyTorch, MFCCs
+
+---
+
+### ✅ **UpTask — MERN Task Manager**  
+> A full-featured task management app with authentication, real-time updates, priority tagging, dark mode, and toast notifications.  
+**Tech Stack:** MongoDB, Express.js, React, Node.js, Redux Toolkit, Tailwind CSS
+
+---
+
+### 🧠 **Graphos**  
+> Gamified platform to explore graph theory concepts like Euler paths, Hamiltonian circuits, and graph isomorphism.  
+**Tech Stack:** HTML, CSS, JavaScript, PowerPoint, Video Animation
+
+---
+
+### ⌨️ **KeyShark — Inspired by Monkeytype**  
+> A modern, minimalist typing test app to help improve typing speed and accuracy.  
+**Tech Stack:** Next.js, TypeScript, Tailwind CSS, Render, LocalStorage
+
+--- 
+
+### 🔔 **BuzzCall — Enterprise Push Notification Engine**  
+> Professional-grade mobile notification system with native Android integration, real-time FCM delivery, and WhatsApp-style UX. Supports deep linking, badge counts, call actions, and works even when the app is killed.  
+**Tech Stack:** React, TypeScript, Java (Android), Capacitor, Firebase Cloud Messaging (FCM), Vite, Shadcn/UI  
+
+---
+### 🎬 **DFlix@Web3onwards** *(Frontend Developer Intern)*  
+> Contributed to features like dynamic movie filtering, college collaboration dashboards, and a language selector with a responsive UI.  
+**Tech Stack:** React.js, Node.js, JavaScript, CSS, Material UI, Postman
 
 ---
 
@@ -55,89 +101,97 @@
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
 ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Android Studio](https://img.shields.io/badge/Android%20Studio-3DDC84?style=flat-square&logo=androidstudio&logoColor=white)
 
 ### 🌐 Frontend & UI Design
 ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![shadcn/ui](https://img.shields.io/badge/shadcn--ui-111827?style=flat-square&logo=tailwindcss&logoColor=white)
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white)
+![Canva](https://img.shields.io/badge/Canva-00C4CC?style=flat-square&logo=canva&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+
+### 📱 Mobile & Native
+![Capacitor](https://img.shields.io/badge/Capacitor-3949AB?style=flat-square&logo=capacitor&logoColor=white)
+![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=java&logoColor=white)
+![Android Studio](https://img.shields.io/badge/Android%20Studio-3DDC84?style=flat-square&logo=androidstudio&logoColor=white)
+
+### 📊 Data Visualization
+![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat-square&logo=python&logoColor=white)
+![Seaborn](https://img.shields.io/badge/Seaborn-5294E2?style=flat-square&logo=python&logoColor=white)
 
 ### ⚙️ Backend & APIs
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![REST API](https://img.shields.io/badge/REST%20API-FF9800?style=flat-square)
+
+### 📊 Databases & Storage
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![MySQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
 
 ### 🚀 DevOps & Deployment
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 ![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)
 ![Render](https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=black)
-![Azure](https://img.shields.io/badge/Azure-0078D4?style=flat-square&logo=microsoftazure&logoColor=white)
+![Azure](https://img.shields.io/badge/Microsoft%20Azure-0078D4?style=flat-square&logo=microsoftazure&logoColor=white)
+![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=flat-square&logo=sonarqube&logoColor=white)
 
-### 🤖 AI / ML Tooling
+### 🤖 AI/ML Tooling
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
 ![BERT](https://img.shields.io/badge/BERT-NLP?style=flat-square&logo=google&logoColor=white)
 ![Librosa](https://img.shields.io/badge/Librosa-AudioAnalysis-44aadd?style=flat-square)
 ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white)
+![CrewAI](https://img.shields.io/badge/CrewAI-Agents-blueviolet?style=flat-square)
 
 ---
 
-## 💼 Featured Projects
+## 📊 GitHub Stats
 
-### 🔥 **AlgoAce**
-> AI‑based DSA prep platform offering smart roadmap generation, real‑time feedback, personalized learning paths, problem recommendations, and detailed explanations.  
-**Tech Stack:** FastAPI, CrewAI, Supabase, OpenAI, Next.js 14
-
----
-
-### 🎙️ **Multimodal Emotion Recognition**
-> Combines BERT and CNN to detect emotions from both audio and text inputs.  
-**Tech Stack:** Python, Librosa, BERT, PyTorch, MFCCs
-
----
-
-### ✅ **UpTask — MERN Task Manager**
-> A full‑featured task management app with authentication, priority tagging, dark mode, and toast notifications.  
-**Tech Stack:** MongoDB, Express.js, Node.js, React, Redux Toolkit, Tailwind CSS
-
----
-
-### 🧠 **Graphos**
-> Gamified platform to explore graph theory concepts like Euler paths, Hamiltonian circuits, and graph isomorphism.  
-**Tech Stack:** HTML, CSS, JavaScript, PowerPoint, Video Animation
-
----
-
-### ⌨️ **KeyShark — Inspired by Monkeytype**
-> A modern, minimalist typing test app to help improve typing speed and accuracy.  
-**Tech Stack:** Next.js, TypeScript, Tailwind CSS, Render, LocalStorage
-
----
-
-### 🔔 **BuzzCall — Enterprise Push Notification Engine**
-> Professional‑grade mobile notification system with native Android integration, real-time FCM delivery, deep‑linking support, badge counts, call actions, and works when the app is killed.  
-**Tech Stack:** React, TypeScript, Java (Android), Capacitor, FCM, Vite, Shadcn/UI  
-
----
-
-### 🎬 **DFlix@Web3onwards** *(Frontend Developer Intern)*
-> Contributed to dynamic movie filtering, college collaboration dashboards, and a language selector with responsive UI.  
-**Tech Stack:** React, Node.js, JavaScript, CSS, Material UI, Postman
+<table>
+  <tr>
+    <td>
+      <!-- GitHub Streak Stats -->
+      <img src="https://streak-stats.demolab.com?user=cxxc7&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
+    </td>
+    <td>
+      <!-- GitHub Stats -->
+      <img src="https://github-readme-stats.vercel.app/api?username=cxxc7&show_icons=true&theme=tokyonight&hide_border=true" alt="GitHub Stats" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <!-- Top Languages -->
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=cxxc7&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" />
+    </td>
+    <td>
+      <!-- Repos per Language -->
+      <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=cxxc7&theme=tokyonight" alt="Repos per Language" />
+    </td>
+  </tr>
+</table>
 
 ---
 
 ## 🌟 Extracurriculars
 
-- ⚽ College‑level football, badminton, and throwball player  
-- 🏃‍♂️ Fast sprinter with track and field achievements  
-- 🎹 Keyboard performer with stage experience  
-- 🏃 Co‑founder of **The Run Co.**, organizing weekly community runs & fitness events  
-- 🎗️ Volunteered with **Aarogya Seva**; donated hair for cancer patient wig creation  
-- 🌍 Travel, movies, music, gaming enthusiast
+- ⚽ College-level **football**, **badminton**, and **throwball** player  
+- 🏃‍♂️ Fast sprinter with a strong **track and field** background  
+- 🎹 Proficient **keyboard** player with performance experience  
+- 🏃 Co-founder of **The Run Co.** – organizing weekly community runs & fitness events  
+- 🎗️ Volunteered with **Aarogya Seva**; donated hair to support wig-making for cancer patients  
+- 🌍 Avid fan of **travel**, **movies**, **music**, **gaming**, and all forms of entertainment  
 
 ---
 
