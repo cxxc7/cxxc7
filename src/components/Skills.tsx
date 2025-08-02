@@ -1,4 +1,3 @@
-
 const Skills = () => {
   const skillCategories = [
     {
@@ -12,7 +11,9 @@ const Skills = () => {
         { name: "Redux", icon: "redux" },
         { name: "CSS3", icon: "css" },
         { name: "Tailwind CSS", icon: "tailwind" },
-        { name: "Figma", icon: "figma" }
+        { name: "Figma", icon: "figma" },
+        { name: "shadcn/ui", icon: "shadcn" }, // Added for Know Your Song
+        { name: "Lucide React", icon: "lucide" }, // Added for Know Your Song
       ],
       color: "from-blue-400 to-cyan-400"
     },
@@ -27,7 +28,8 @@ const Skills = () => {
         { name: "FastAPI", icon: "fastapi" },
         { name: "Postman", icon: "postman" },
         { name: "Docker", icon: "docker" },
-        { name: "Jupyter", icon: "jupyter" }
+        { name: "Jupyter", icon: "jupyter" },
+        { name: "Supabase", icon: "supabase" }, // Added for Know Your Song
       ],
       color: "from-cyan-400 to-blue-500"
     },
@@ -37,7 +39,7 @@ const Skills = () => {
         { name: "MongoDB", icon: "mongodb" },
         { name: "MySQL", icon: "mysql" },
         { name: "Firebase", icon: "firebase" },
-        { name: "Supabase", icon: "supabase" }
+        { name: "Supabase", icon: "supabase" },
       ],
       color: "from-blue-500 to-indigo-500"
     },
@@ -50,10 +52,18 @@ const Skills = () => {
         { name: "Vercel", icon: "vercel" },
         { name: "Netlify", icon: "netlify" },
         { name: "Azure", icon: "azure" },
-        { name: "PyTorch", icon: "pytorch" },
-        { name: "Render", icon: "render" }
+        { name: "Render", icon: "render" },
+        { name: "Vite", icon: "vite" }, // Added for Know Your Song
       ],
       color: "from-indigo-500 to-purple-500"
+    },
+    {
+      title: "Charting & Data Visualization",
+      skills: [
+        { name: "Recharts", icon: "recharts" }, // Added for Know Your Song
+        { name: "D3.js", icon: "d3js" }, // If you're using D3 for any future projects
+      ],
+      color: "from-green-500 to-teal-500"
     }
   ];
 
