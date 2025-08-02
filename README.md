@@ -54,31 +54,36 @@
 ## 💼 Featured Projects
 
 ### 🔥 **AlgoAce**  
-> AI-based DSA prep platform offering smart roadmap generation, real-time feedback, personalized learning paths, problem recommendations, and detailed explanations.  
+> AI-based DSA prep platform offering smart roadmap generation, real-time feedback, personalized learning paths, problem recommendations, and detailed explanations.
+  
 **Tech Stack:** FastAPI, CrewAI, Supabase, OpenAI, Next.js 14
 
 ---
 
 ### 🎙️ **Multimodal Emotion Recognition**  
-> Combines BERT and CNN to detect emotions from both audio and text inputs.  
+> Combines BERT and CNN to detect emotions from both audio and text inputs.
+
 **Tech Stack:** Python, Librosa, BERT, PyTorch, MFCCs
 
 ---
 
 ### ✅ **UpTask — MERN Task Manager**  
-> A full-featured task management app with authentication, real-time updates, priority tagging, dark mode, and toast notifications.  
+> A full-featured task management app with authentication, real-time updates, priority tagging, dark mode, and toast notifications.
+
 **Tech Stack:** MongoDB, Express.js, React, Node.js, Redux Toolkit, Tailwind CSS
 
 ---
 
 ### 🧠 **Graphos**  
-> Gamified platform to explore graph theory concepts like Euler paths, Hamiltonian circuits, and graph isomorphism.  
+> Gamified platform to explore graph theory concepts like Euler paths, Hamiltonian circuits, and graph isomorphism.
+
 **Tech Stack:** HTML, CSS, JavaScript, PowerPoint, Video Animation
 
 ---
 
 ### ⌨️ **KeyShark — Inspired by Monkeytype**  
-> A modern, minimalist typing test app to help improve typing speed and accuracy.  
+> A modern, minimalist typing test app to help improve typing speed and accuracy.
+
 **Tech Stack:** Next.js, TypeScript, Tailwind CSS, Render, LocalStorage
 
 --- 
@@ -91,12 +96,14 @@
 ---
 
 ### 🔔 **BuzzCall — Enterprise Push Notification Engine**  
-> Professional-grade mobile notification system with native Android integration, real-time FCM delivery, and WhatsApp-style UX. Supports deep linking, badge counts, call actions, and works even when the app is killed.  
+> Professional-grade mobile notification system with native Android integration, real-time FCM delivery, and WhatsApp-style UX. Supports deep linking, badge counts, call actions, and works even when the app is killed.
+
 **Tech Stack:** React, TypeScript, Java (Android), Capacitor, Firebase Cloud Messaging (FCM), Vite, Shadcn/UI  
 
 ---
 ### 🎬 **DFlix@Web3onwards** *(Frontend Developer Intern)*  
-> Contributed to features like dynamic movie filtering, college collaboration dashboards, and a language selector with a responsive UI.  
+> Contributed to features like dynamic movie filtering, college collaboration dashboards, and a language selector with a responsive UI.
+
 **Tech Stack:** React.js, Node.js, JavaScript, CSS, Material UI, Postman
 
 ---
