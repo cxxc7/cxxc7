@@ -44,6 +44,14 @@ const Projects = () => {
       gradient: "from-orange-500 to-red-500"
     },
     {
+      title: "Know Your Song",
+      description: "A music discovery platform built with React, TypeScript, and Supabase, allowing users to search for songs, view detailed information, and explore popularity trends over time.",
+      technologies: ["React", "TypeScript", "Supabase", "Tailwind CSS", "Vite", "React Query", "shadcn/ui", "Recharts"],
+      github: "https://github.com/cxxc7/knowyoursong",  
+      demo: "https://knowyoursong.lovable.app",  
+      gradient: "from-green-500 to-pink-500"
+    },
+    {
       title: "BuzzCall",
       description: "Enterprise-grade mobile push notification engine featuring native Android module integration, FCM support, real-time messaging, and production-ready performance.",
       technologies: ["React", "TypeScript", "Capacitor", "Java", "Firebase"],
