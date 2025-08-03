@@ -89,7 +89,7 @@
 --- 
 
 ### 🎵 **Know Your Song**
-> A powerful music discovery application built with React, TypeScript, and Supabase, designed to help you explore and discover detailed information about your favorite songs. With features like smart search, interactive popularity charts, YouTube integration, and beautiful dark/light theme support, it’s the ultimate app for music enthusiasts.
+> A powerful music discovery application designed to help you explore and discover detailed information about your favorite songs. With features like smart search, interactive popularity charts, YouTube integration, and beautiful dark/light theme support, it’s the ultimate app for music enthusiasts.
 
 **Tech Stack:** React, TypeScript, Supabase, Tailwind CSS, Vite, React Query, shadcn/ui, Recharts
 
