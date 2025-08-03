@@ -33,7 +33,7 @@ const Projects = () => {
       technologies: ["React", "JavaScript", "Graph Theory", "Education"],
       github: "https://github.com/cxxc7/graphos",
       demo: "#",
-      gradient: "from-brown-500 to-emerald-500"
+      gradient: "from-white-500 to-brown-500"
     },
     {
       title: "KeyShark",
@@ -41,7 +41,7 @@ const Projects = () => {
       technologies: ["React", "TypeScript", "CSS", "Performance"],
       github: "https://github.com/cxxc7/keyshark",
       demo: "https://keyshark1.onrender.com/",
-      gradient: "from-orange-500 to-red-500"
+      gradient: "from-black-500 to-cyan-500"
     },
     {
       title: "Know Your Song",
@@ -49,7 +49,7 @@ const Projects = () => {
       technologies: ["React", "TypeScript", "Supabase", "Tailwind CSS", "Vite", "React Query", "shadcn/ui", "Recharts"],
       github: "https://github.com/cxxc7/knowyoursong",  
       demo: "https://knowyoursong.lovable.app",  
-      gradient: "from-green-500 to-black-500"
+      gradient: "from-green-500 to-purple-500"
     },
     {
       title: "BuzzCall",
