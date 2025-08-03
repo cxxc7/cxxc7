@@ -25,7 +25,7 @@ const Projects = () => {
       technologies: ["MongoDB", "Express.js", "React", "Node.js", "Redux Toolkit", "Tailwind CSS"],
       github: "https://github.com/cxxc7/uptask", 
       demo: "#", 
-      gradient: "from-cyan-500 to-teal-500"
+      gradient: "from-cyan-500 to-red-500"
     },
     {
       title: "Graphos",
@@ -33,7 +33,7 @@ const Projects = () => {
       technologies: ["React", "JavaScript", "Graph Theory", "Education"],
       github: "https://github.com/cxxc7/graphos",
       demo: "#",
-      gradient: "from-green-500 to-emerald-500"
+      gradient: "from-brown-500 to-emerald-500"
     },
     {
       title: "KeyShark",
@@ -49,7 +49,7 @@ const Projects = () => {
       technologies: ["React", "TypeScript", "Supabase", "Tailwind CSS", "Vite", "React Query", "shadcn/ui", "Recharts"],
       github: "https://github.com/cxxc7/knowyoursong",  
       demo: "https://knowyoursong.lovable.app",  
-      gradient: "from-green-500 to-pink-500"
+      gradient: "from-green-500 to-black-500"
     },
     {
       title: "BuzzCall",
