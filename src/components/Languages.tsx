@@ -8,7 +8,7 @@ const Languages = () => {
     },
     {
       name: "Kannada",
-      level: "Fluent",
+      level: "Native (Mother Tongue)",
       percentage: 90,
       color: "from-cyan-400 to-blue-500"
     },
