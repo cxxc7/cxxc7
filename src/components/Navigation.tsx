@@ -35,18 +35,18 @@ const Navigation = () => {
   const canvasRef = useRef(null);
   const animRef = useRef(null);
 
-  const iconSize = 22;
+  const iconSize = 24; // slightly larger
 
   const navItems = [
-    { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-1.5" /> },
-    { name: "About", href: "#about", icon: <User size={iconSize} className="mr-1.5" /> },
-    { name: "Education", href: "#education", icon: <Book size={iconSize} className="mr-1.5" /> },
-    { name: "Skills", href: "#skills", icon: <Code size={iconSize} className="mr-1.5" /> },
-    { name: "Projects", href: "#projects", icon: <Layers size={iconSize} className="mr-1.5" /> },
-    { name: "Experience", href: "#experience", icon: <Briefcase size={iconSize} className="mr-1.5" /> },
-    { name: "Extracurricular", href: "#extracurricular", icon: <Star size={iconSize} className="mr-1.5" /> },
-    { name: "Languages", href: "#languages", icon: <MessageSquare size={iconSize} className="mr-1.5" /> },
-    { name: "Contact", href: "#contact", icon: <Mail size={iconSize} className="mr-1.5" /> },
+    { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-2" /> },
+    { name: "About", href: "#about", icon: <User size={iconSize} className="mr-2" /> },
+    { name: "Education", href: "#education", icon: <Book size={iconSize} className="mr-2" /> },
+    { name: "Skills", href: "#skills", icon: <Code size={iconSize} className="mr-2" /> },
+    { name: "Projects", href: "#projects", icon: <Layers size={iconSize} className="mr-2" /> },
+    { name: "Experience", href: "#experience", icon: <Briefcase size={iconSize} className="mr-2" /> },
+    { name: "Extracurricular", href: "#extracurricular", icon: <Star size={iconSize} className="mr-2" /> },
+    { name: "Languages", href: "#languages", icon: <MessageSquare size={iconSize} className="mr-2" /> },
+    { name: "Contact", href: "#contact", icon: <Mail size={iconSize} className="mr-2" /> },
   ];
 
   // Detect active section
@@ -87,7 +87,7 @@ const Navigation = () => {
     }, 4000);
   };
 
-  // Canvas for matrix effect
+  // Canvas matrix effect
   useEffect(() => {
     if (!showMatrix) return;
     const canvas = canvasRef.current;
@@ -146,7 +146,7 @@ const Navigation = () => {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
             <div className="relative flex items-center space-x-2">
@@ -173,7 +173,7 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollTo(item.href)}
-                  className={`flex items-center text-[15px] font-semibold transition-all relative group px-3 ${
+                  className={`flex items-center text-[16.5px] font-semibold transition-all relative group px-6 ${
                     activeSection === item.href
                       ? "text-blue-400"
                       : "text-gray-300 hover:text-blue-400"
@@ -181,9 +181,9 @@ const Navigation = () => {
                 >
                   {item.icon}
                   <span>{item.name}</span>
-                  {/* Underline */}
+                  {/* Underline much lower now */}
                   <span
-                    className={`absolute -bottom-[3px] left-0 rounded-full bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 transition-all duration-300 ${
+                    className={`absolute -bottom-[12px] left-0 rounded-full bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 transition-all duration-300 ${
                       activeSection === item.href
                         ? "w-full h-[5px] opacity-100 shadow-[0_0_12px_rgba(56,189,248,1)]"
                         : "w-0 h-[4px] opacity-70 group-hover:w-full"
