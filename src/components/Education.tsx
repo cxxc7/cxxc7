@@ -10,6 +10,7 @@ const educationData = [
     borderColor: "border-blue-500/50",
     textColor: "text-blue-400",
     gradient: "from-blue-500 to-cyan-500",
+    glow: "rgba(59,130,246,0.6)", // blue glow
   },
   {
     school: "RV PU College",
@@ -21,6 +22,7 @@ const educationData = [
     borderColor: "border-green-500/50",
     textColor: "text-green-400",
     gradient: "from-green-500 to-emerald-500",
+    glow: "rgba(34,197,94,0.6)", // green glow
   },
   {
     school: "PPEC Sadashivanagara",
@@ -32,17 +34,19 @@ const educationData = [
     borderColor: "border-fuchsia-500/50",
     textColor: "text-fuchsia-400",
     gradient: "from-fuchsia-500 to-pink-500",
+    glow: "rgba(217,70,239,0.6)", // magenta glow
   },
   {
     school: "St. Joseph Boys High School",
     degree: "Middle School",
     dates: "2014 - 2017",
     grade: "—",
-    // 🔥 Black → Orange Theme
+    // 🖤🟠 Black → Orange theme
     bgColor: "bg-black/40",
     borderColor: "border-orange-500/60",
     textColor: "text-orange-400",
     gradient: "from-black via-gray-800 to-orange-500",
+    glow: "rgba(249,115,22,0.6)", // orange glow
   },
   {
     school: "Sophia High School",
@@ -53,24 +57,23 @@ const educationData = [
     borderColor: "border-yellow-400/50",
     textColor: "text-yellow-400",
     gradient: "from-yellow-300 to-amber-500",
+    glow: "rgba(234,179,8,0.6)", // golden yellow glow
   },
 ];
 
 const Education = () => {
   return (
     <section id="education" className="py-20 px-4 relative">
-      {/* Embedded CSS for glow */}
+      {/* Embedded CSS for glow effects */}
       <style>{`
         .achievement-glow {
           position: relative;
           overflow: hidden;
-          border-radius: 9999px;
+          border-radius: 0.75rem;
           transition: box-shadow 0.4s ease, transform 0.3s ease;
         }
         .achievement-glow:hover {
-          box-shadow: 0 0 25px rgba(255,255,255,0.4),
-                      0 0 40px rgba(255,255,255,0.2);
-          transform: scale(1.07) translateY(-4px);
+          transform: scale(1.04) translateY(-3px);
         }
       `}</style>
 
@@ -83,9 +86,8 @@ const Education = () => {
           <p className="text-gray-400 text-lg">My academic journey</p>
         </div>
 
-        {/* Timeline Container */}
+        {/* Timeline */}
         <div className="relative">
-          {/* Center Line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-yellow-400 via-pink-500 to-blue-500 hidden md:block rounded-full"></div>
 
           <div className="space-y-8 md:space-y-12 relative">
@@ -138,7 +140,10 @@ const Education = () => {
                             <div className="flex flex-wrap items-center gap-3">
                               {/* Grade */}
                               <span
-                                className={`achievement-glow w-48 text-center px-4 py-2 bg-gradient-to-r ${item.gradient} rounded-full font-bold text-white text-lg shadow-lg`}
+                                className={`achievement-glow min-w-[220px] text-center px-6 py-1.5 bg-gradient-to-r ${item.gradient} font-bold text-white text-base shadow-lg`}
+                                style={{
+                                  boxShadow: `0 0 15px ${item.glow}`,
+                                }}
                               >
                                 {item.grade.includes("%")
                                   ? `Percentage: ${item.grade}`
@@ -148,9 +153,12 @@ const Education = () => {
                               {/* Achievement */}
                               {item.achievement && (
                                 <span
-                                  className={`achievement-glow w-48 text-center px-5 py-2 ${item.bgColor} ${item.textColor} rounded-full text-base md:text-lg font-bold border ${item.borderColor} flex justify-center items-center gap-2 transition-all duration-500 ease-out`}
+                                  className={`achievement-glow min-w-[220px] text-center px-6 py-1.5 ${item.bgColor} ${item.textColor} font-bold border ${item.borderColor} flex justify-center items-center gap-2 transition-all duration-500 ease-out`}
+                                  style={{
+                                    boxShadow: `0 0 15px ${item.glow}`,
+                                  }}
                                 >
-                                  <span className="text-2xl">
+                                  <span className="text-xl">
                                     {item.achievement.includes("1st")
                                       ? "🥇"
                                       : item.achievement.includes("2nd")
