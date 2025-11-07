@@ -76,7 +76,7 @@ const Navigation = () => {
     setIsMobileOpen(false);
   };
 
-  // Matrix effect
+  // Matrix effect toggle
   const toggleMatrixRain = () => {
     if (showMatrix) return;
     setMatrixClicked(true);
@@ -141,17 +141,6 @@ const Navigation = () => {
 
   return (
     <>
-      <style jsx>{`
-        @keyframes glowPulse {
-          0%, 100% {
-            filter: drop-shadow(0 0 6px rgba(56,189,248,0.8));
-          }
-          50% {
-            filter: drop-shadow(0 0 14px rgba(56,189,248,1));
-          }
-        }
-      `}</style>
-
       {/* ── Navbar ── */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
@@ -196,13 +185,13 @@ const Navigation = () => {
                 >
                   {item.icon}
                   <span>{item.name}</span>
+                  {/* Underline - thicker & glowing */}
                   <span
-                    className={`absolute -bottom-1 left-0 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300
-                      ${
-                        activeSection === item.href
-                          ? "w-full h-[3px] opacity-100 animate-[glowPulse_2s_ease-in-out_infinite]"
-                          : "w-0 h-[2px] opacity-60 group-hover:w-full"
-                      }`}
+                    className={`absolute -bottom-1 left-0 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300 ${
+                      activeSection === item.href
+                        ? "w-full h-[4px] opacity-100 shadow-[0_0_10px_rgba(56,189,248,0.9)]"
+                        : "w-0 h-[3px] opacity-60 group-hover:w-full"
+                    }`}
                   ></span>
                 </button>
               ))}
@@ -239,10 +228,9 @@ const Navigation = () => {
             <button
               key={item.name}
               onClick={() => scrollTo(item.href)}
-              className={`flex items-center text-lg w-full text-left text-gray-300 hover:text-blue-400
-                         ${
-                           activeSection === item.href ? "text-blue-400" : ""
-                         }`}
+              className={`flex items-center text-lg w-full text-left text-gray-300 hover:text-blue-400 ${
+                activeSection === item.href ? "text-blue-400" : ""
+              }`}
             >
               {item.icon}
               {item.name}
@@ -264,8 +252,9 @@ const Navigation = () => {
         <canvas
           ref={canvasRef}
           className={`fixed left-0 top-16 w-screen h-[calc(100vh-4rem)] z-[40] pointer-events-none
-                      transition-opacity duration-1000 ease-in-out
-                      ${fadeOut ? "opacity-0" : "opacity-100"}`}
+                      transition-opacity duration-1000 ease-in-out ${
+                        fadeOut ? "opacity-0" : "opacity-100"
+                      }`}
           style={{
             backdropFilter: "blur(2px)",
             WebkitBackdropFilter: "blur(2px)",
