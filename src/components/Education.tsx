@@ -38,10 +38,11 @@ const educationData = [
     degree: "Middle School",
     dates: "2014 - 2017",
     grade: "—",
-    bgColor: "bg-orange-100/10",
-    borderColor: "border-orange-400/50",
-    textColor: "text-orange-300",
-    gradient: "from-white to-orange-400",
+    // 🔥 Black → Orange Theme
+    bgColor: "bg-black/40",
+    borderColor: "border-orange-500/60",
+    textColor: "text-orange-400",
+    gradient: "from-black via-gray-800 to-orange-500",
   },
   {
     school: "Sophia High School",
@@ -58,51 +59,18 @@ const educationData = [
 const Education = () => {
   return (
     <section id="education" className="py-20 px-4 relative">
-      {/* Embedded CSS for animation */}
+      {/* Embedded CSS for glow */}
       <style>{`
-        @keyframes spinGlow {
-          0% {
-            background: conic-gradient(
-              from 0deg,
-              rgba(255,255,255,0.6) 0deg,
-              transparent 40deg,
-              transparent 360deg
-            );
-          }
-          100% {
-            background: conic-gradient(
-              from 360deg,
-              rgba(255,255,255,0.6) 0deg,
-              transparent 40deg,
-              transparent 360deg
-            );
-          }
-        }
         .achievement-glow {
           position: relative;
           overflow: hidden;
           border-radius: 9999px;
+          transition: box-shadow 0.4s ease, transform 0.3s ease;
         }
-        .achievement-glow::before {
-          content: "";
-          position: absolute;
-          inset: -2px;
-          border-radius: inherit;
-          background: conic-gradient(
-            from 0deg,
-            rgba(255,255,255,0.6) 0deg,
-            transparent 40deg,
-            transparent 360deg
-          );
-          animation: spinGlow 2s linear infinite paused;
-          z-index: 0;
-        }
-        .achievement-glow:hover::before {
-          animation-play-state: running;
-        }
-        .achievement-glow > * {
-          position: relative;
-          z-index: 1;
+        .achievement-glow:hover {
+          box-shadow: 0 0 25px rgba(255,255,255,0.4),
+                      0 0 40px rgba(255,255,255,0.2);
+          transform: scale(1.07) translateY(-4px);
         }
       `}</style>
 
@@ -117,6 +85,7 @@ const Education = () => {
 
         {/* Timeline Container */}
         <div className="relative">
+          {/* Center Line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-yellow-400 via-pink-500 to-blue-500 hidden md:block rounded-full"></div>
 
           <div className="space-y-8 md:space-y-12 relative">
@@ -144,6 +113,7 @@ const Education = () => {
                   }`}
                 >
                   <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 hover:transform hover:scale-[1.03] group hover:shadow-2xl hover:shadow-blue-500/10">
+                    {/* Gradient Top Bar */}
                     <div className={`h-2 bg-gradient-to-r ${item.gradient}`}></div>
 
                     <div className="p-6 md:p-8">
@@ -166,19 +136,21 @@ const Education = () => {
                           {/* Grade + Achievement */}
                           {item.grade !== "—" && (
                             <div className="flex flex-wrap items-center gap-3">
+                              {/* Grade */}
                               <span
-                                className={`px-4 py-2 bg-gradient-to-r ${item.gradient} rounded-lg font-bold text-white text-lg shadow-lg`}
+                                className={`achievement-glow w-48 text-center px-4 py-2 bg-gradient-to-r ${item.gradient} rounded-full font-bold text-white text-lg shadow-lg`}
                               >
                                 {item.grade.includes("%")
                                   ? `Percentage: ${item.grade}`
                                   : `CGPA: ${item.grade}`}
                               </span>
 
+                              {/* Achievement */}
                               {item.achievement && (
                                 <span
-                                  className={`achievement-glow px-5 py-2 ${item.bgColor} ${item.textColor} rounded-full text-base md:text-lg font-bold border ${item.borderColor} flex items-center gap-2 shadow-md shadow-current/20 transition-all duration-500 ease-out transform group-hover:scale-115 group-hover:-translate-y-1.5 group-hover:shadow-lg group-hover:shadow-current/40`}
+                                  className={`achievement-glow w-48 text-center px-5 py-2 ${item.bgColor} ${item.textColor} rounded-full text-base md:text-lg font-bold border ${item.borderColor} flex justify-center items-center gap-2 transition-all duration-500 ease-out`}
                                 >
-                                  <span className="text-2xl transition-transform duration-500 group-hover:scale-125">
+                                  <span className="text-2xl">
                                     {item.achievement.includes("1st")
                                       ? "🥇"
                                       : item.achievement.includes("2nd")
@@ -187,9 +159,7 @@ const Education = () => {
                                       ? "🥉"
                                       : "🏆"}
                                   </span>
-                                  <span className="tracking-wide transition-all duration-500 group-hover:text-white group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]">
-                                    {item.achievement}
-                                  </span>
+                                  <span>{item.achievement}</span>
                                 </span>
                               )}
                             </div>
