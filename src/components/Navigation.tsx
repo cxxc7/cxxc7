@@ -35,21 +35,21 @@ const Navigation = () => {
   const canvasRef = useRef(null);
   const animRef = useRef(null);
 
-  const iconSize = 25;
+  const iconSize = 22;
 
   const navItems = [
-    { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-0.8" /> },
-    { name: "About", href: "#about", icon: <User size={iconSize} className="mr-0.8" /> },
-    { name: "Education", href: "#education", icon: <Book size={iconSize} className="mr-0.8" /> },
-    { name: "Skills", href: "#skills", icon: <Code size={iconSize} className="mr-0.8" /> },
-    { name: "Projects", href: "#projects", icon: <Layers size={iconSize} className="mr-0.8" /> },
-    { name: "Experience", href: "#experience", icon: <Briefcase size={iconSize} className="mr-0.8" /> },
-    { name: "Extracurricular", href: "#extracurricular", icon: <Star size={iconSize} className="mr-0.8" /> },
-    { name: "Languages", href: "#languages", icon: <MessageSquare size={iconSize} className="mr-0.8" /> },
-    { name: "Contact", href: "#contact", icon: <Mail size={iconSize} className="mr-0.5" /> },
+    { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-1.5" /> },
+    { name: "About", href: "#about", icon: <User size={iconSize} className="mr-1.5" /> },
+    { name: "Education", href: "#education", icon: <Book size={iconSize} className="mr-1.5" /> },
+    { name: "Skills", href: "#skills", icon: <Code size={iconSize} className="mr-1.5" /> },
+    { name: "Projects", href: "#projects", icon: <Layers size={iconSize} className="mr-1.5" /> },
+    { name: "Experience", href: "#experience", icon: <Briefcase size={iconSize} className="mr-1.5" /> },
+    { name: "Extracurricular", href: "#extracurricular", icon: <Star size={iconSize} className="mr-1.5" /> },
+    { name: "Languages", href: "#languages", icon: <MessageSquare size={iconSize} className="mr-1.5" /> },
+    { name: "Contact", href: "#contact", icon: <Mail size={iconSize} className="mr-1.5" /> },
   ];
 
-  // Scroll detection for active section
+  // Detect active section
   useEffect(() => {
     const onScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -70,13 +70,11 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Smooth scroll
   const scrollTo = (href) => {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     setIsMobileOpen(false);
   };
 
-  // Matrix effect toggle
   const toggleMatrixRain = () => {
     if (showMatrix) return;
     setMatrixClicked(true);
@@ -89,10 +87,9 @@ const Navigation = () => {
     }, 4000);
   };
 
-  // Canvas for matrix rain
+  // Canvas for matrix effect
   useEffect(() => {
     if (!showMatrix) return;
-
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const navbarH = 64;
@@ -158,8 +155,7 @@ const Navigation = () => {
                 title="Click to activate Matrix"
                 aria-label="Toggle Matrix Rain"
                 className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r
-                           from-blue-400 via-cyan-400 to-teal-400 hover:animate-glow
-                           transition-transform duration-200 active:scale-95 hover:scale-105"
+                           from-blue-400 via-cyan-400 to-teal-400 transition-transform duration-200 active:scale-95 hover:scale-105"
               >
                 NNM
               </button>
@@ -177,7 +173,7 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollTo(item.href)}
-                  className={`flex items-center text-sm font-medium transition-all relative group px-2 ${
+                  className={`flex items-center text-[15px] font-semibold transition-all relative group px-3 ${
                     activeSection === item.href
                       ? "text-blue-400"
                       : "text-gray-300 hover:text-blue-400"
@@ -185,12 +181,12 @@ const Navigation = () => {
                 >
                   {item.icon}
                   <span>{item.name}</span>
-                  {/* Underline - thicker & glowing */}
+                  {/* Underline */}
                   <span
-                    className={`absolute -bottom-1 left-0 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300 ${
+                    className={`absolute -bottom-[3px] left-0 rounded-full bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 transition-all duration-300 ${
                       activeSection === item.href
-                        ? "w-full h-[4px] opacity-100 shadow-[0_0_10px_rgba(56,189,248,0.9)]"
-                        : "w-0 h-[3px] opacity-60 group-hover:w-full"
+                        ? "w-full h-[5px] opacity-100 shadow-[0_0_12px_rgba(56,189,248,1)]"
+                        : "w-0 h-[4px] opacity-70 group-hover:w-full"
                     }`}
                   ></span>
                 </button>
