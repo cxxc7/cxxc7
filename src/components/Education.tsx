@@ -51,30 +51,36 @@ const Education = () => {
 
         {/* Timeline Container */}
         <div className="relative">
-          {/* Vertical Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 hidden md:block"></div>
+          {/* Vertical Timeline Line - with rounded caps */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 hidden md:block rounded-full"></div>
 
           {/* Timeline Items */}
-          <div className="space-y-12 md:space-y-24">
+          <div className="space-y-16 md:space-y-24">
             {educationData.map((item, index) => (
               <div
                 key={index}
                 className={`relative flex flex-col md:flex-row items-center ${
-                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                  index % 2 === 1 ? 'md:flex-row-reverse' : ''
                 }`}
               >
-                {/* Timeline Dot */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-gradient-to-r border-4 border-slate-900 z-10 hidden md:block"
-                  style={{
-                    background: `linear-gradient(135deg, ${item.gradient.split(' ')[1]}, ${item.gradient.split(' ')[3]})`,
-                  }}
-                ></div>
+                {/* Timeline Dot and Year Badge */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 z-20 hidden md:flex flex-col items-center">
+                  <div 
+                    className="w-6 h-6 rounded-full border-4 border-slate-900 shadow-lg"
+                    style={{
+                      background: `linear-gradient(135deg, ${item.gradient.split(' ')[1]}, ${item.gradient.split(' ')[3]})`,
+                    }}
+                  ></div>
+                  <div className={`mt-2 px-4 py-1 bg-gradient-to-r ${item.gradient} rounded-lg font-bold text-white text-sm shadow-lg`}>
+                    {item.dates}
+                  </div>
+                </div>
 
                 {/* Card */}
-                <div className={`w-full md:w-[calc(50%-3rem)] ${
-                  index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'
+                <div className={`w-full md:w-[calc(50%-4rem)] ${
+                  index % 2 === 1 ? 'md:pr-16' : 'md:pl-16'
                 }`}>
-                  <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 hover:transform hover:scale-105 group">
+                  <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 hover:transform hover:scale-105 group hover:shadow-2xl hover:shadow-blue-500/10">
                     {/* Gradient Top Bar */}
                     <div className={`h-2 bg-gradient-to-r ${item.gradient}`}></div>
                     
@@ -89,20 +95,19 @@ const Education = () => {
                           </h3>
                           <p className="text-gray-300 mb-4">{item.degree}</p>
                           
-                          <div className="flex flex-col gap-3">
-                            <span className="text-sm text-gray-500">{item.dates}</span>
-                            
-                            {/* Highlighted Grade Badge */}
-                            <div className="flex flex-wrap items-center gap-2">
-                              <span className={`px-4 py-2 bg-gradient-to-r ${item.gradient} rounded-lg font-bold text-white text-lg shadow-lg`}>
-                                {item.grade}
+                          {/* Mobile dates */}
+                          <span className="text-sm text-gray-500 md:hidden block mb-4">{item.dates}</span>
+                          
+                          {/* Highlighted Grade Badge */}
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className={`px-4 py-2 bg-gradient-to-r ${item.gradient} rounded-lg font-bold text-white text-lg shadow-lg`}>
+                              {item.grade}
+                            </span>
+                            {item.achievement && (
+                              <span className={`px-3 py-1 ${item.bgColor} ${item.textColor} rounded-full text-sm font-semibold border ${item.borderColor}`}>
+                                {item.achievement}
                               </span>
-                              {item.achievement && (
-                                <span className={`px-3 py-1 ${item.bgColor} ${item.textColor} rounded-full text-sm font-semibold border ${item.borderColor}`}>
-                                  {item.achievement}
-                                </span>
-                              )}
-                            </div>
+                            )}
                           </div>
                         </div>
                       </div>
