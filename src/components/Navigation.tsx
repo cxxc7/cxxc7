@@ -6,6 +6,7 @@ import {
   X,
   Home,
   User,
+  Book,
   Code,
   Mail,
   Briefcase,
@@ -39,6 +40,7 @@ const Navigation = () => {
   const navItems = [
     { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-2" /> },
     { name: "About", href: "#about", icon: <User size={iconSize} className="mr-2" /> },
+    { name: "Education", href: "#education", icon: <Book size={iconSize} className="mr-2" /> },
     { name: "Skills", href: "#skills", icon: <Code size={iconSize} className="mr-2" /> },
     { name: "Projects", href: "#projects", icon: <Layers size={iconSize} className="mr-2" /> },
     { name: "Experience", href: "#experience", icon: <Briefcase size={iconSize} className="mr-2" /> },
