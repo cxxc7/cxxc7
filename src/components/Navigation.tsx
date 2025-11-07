@@ -35,7 +35,7 @@ const Navigation = () => {
   const canvasRef = useRef(null);
   const animRef = useRef(null);
 
-  const iconSize = 24; // 🔥 bigger icons now
+  const iconSize = 24; // icon size
 
   const navItems = [
     { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-2" /> },
@@ -167,8 +167,8 @@ const Navigation = () => {
               )}
             </div>
 
-            {/* Desktop Nav */}
-            <div className="hidden md:flex flex-wrap justify-end items-center space-x-2">
+            {/* Desktop Nav - all in one line */}
+            <div className="hidden md:flex flex-nowrap justify-end items-center space-x-2 overflow-x-auto whitespace-nowrap">
               {navItems.map((item) => (
                 <button
                   key={item.name}
