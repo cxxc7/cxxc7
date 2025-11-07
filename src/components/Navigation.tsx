@@ -170,12 +170,12 @@ const Navigation = () => {
             </div>
 
             {/* ── Desktop Nav ── */}
-            <div className="hidden md:flex space-x-3 items-center">
+            <div className="hidden md:flex space-x-2 items-center">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollTo(item.href)}
-                  className={`flex items-center text-base font-medium transition-all relative group ${
+                  className={`flex items-center text-sm font-medium transition-all relative group px-2 ${
                     activeSection === item.href
                       ? "text-blue-400"
                       : "text-gray-300 hover:text-blue-400"
