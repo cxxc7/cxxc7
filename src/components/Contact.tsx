@@ -1,32 +1,39 @@
-import { useState } from "react";
 import { Mail, Github, Linkedin, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be less than 1000 characters")
+});
+
+type ContactFormValues = z.infer<typeof contactSchema>;
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
   const { toast } = useToast();
+  
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: ""
+    }
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = (data: ContactFormValues) => {
     toast({
       title: "Message sent!",
       description: "Thank you for reaching out. I'll get back to you soon!",
     });
-    setFormData({ name: "", email: "", message: "" });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    form.reset();
   };
 
   return (
@@ -111,23 +118,71 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Info Boxes */}
+          {/* Contact Form */}
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/25 animate-slide-up delay-400">
-            <h3 className="text-2xl font-semibold text-white mb-6">Connect With Me</h3>
-            <div className="space-y-6">
-              <div className="p-4 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all duration-300">
-                <h4 className="text-lg font-semibold text-blue-400 mb-2">Professional</h4>
-                <p className="text-gray-300">Open to internships, collaborations, and full-time opportunities in web development and AI/ML.</p>
-              </div>
-              <div className="p-4 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all duration-300">
-                <h4 className="text-lg font-semibold text-cyan-400 mb-2">Projects</h4>
-                <p className="text-gray-300">Interested in contributing to open source projects and building innovative solutions.</p>
-              </div>
-              <div className="p-4 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all duration-300">
-                <h4 className="text-lg font-semibold text-blue-300 mb-2">Learning</h4>
-                <p className="text-gray-300">Always eager to learn new technologies and share knowledge with the community.</p>
-              </div>
-            </div>
+            <h3 className="text-2xl font-semibold text-white mb-6">Send a Message</h3>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-300">Name</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Your name" 
+                          className="bg-slate-700/50 border-slate-600 text-white placeholder:text-gray-400"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-300">Email</FormLabel>
+                      <FormControl>
+                        <Input 
+                          type="email"
+                          placeholder="your.email@example.com" 
+                          className="bg-slate-700/50 border-slate-600 text-white placeholder:text-gray-400"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-300">Message</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="Your message..." 
+                          className="bg-slate-700/50 border-slate-600 text-white placeholder:text-gray-400 min-h-[120px]"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button 
+                  type="submit" 
+                  className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white"
+                >
+                  Send Message
+                </Button>
+              </form>
+            </Form>
           </div>
         </div>
 
