@@ -35,7 +35,7 @@ const Navigation = () => {
   const canvasRef = useRef(null);
   const animRef = useRef(null);
 
-  const iconSize = 22;
+  const iconSize = 24; // 🔥 bigger icons now
 
   const navItems = [
     { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-2" /> },
@@ -137,7 +137,7 @@ const Navigation = () => {
 
   return (
     <>
-      {/* ── Top Navbar ── */}
+      {/* ── Navbar ── */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           isScrolled
@@ -147,7 +147,7 @@ const Navigation = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            {/* ── Logo ── */}
+            {/* Logo */}
             <div className="relative flex items-center space-x-2">
               <button
                 onClick={toggleMatrixRain}
@@ -167,13 +167,13 @@ const Navigation = () => {
               )}
             </div>
 
-            {/* ── Desktop Nav ── */}
-            <div className="hidden md:flex flex-wrap justify-end items-center space-x-2 overflow-x-auto no-scrollbar">
+            {/* Desktop Nav */}
+            <div className="hidden md:flex flex-wrap justify-end items-center space-x-2">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollTo(item.href)}
-                  className={`flex items-center text-sm font-medium transition-all relative group px-2 ${
+                  className={`flex items-center text-base font-medium transition-all relative group px-3 ${
                     activeSection === item.href
                       ? "text-blue-400"
                       : "text-gray-300 hover:text-blue-400"
@@ -194,7 +194,7 @@ const Navigation = () => {
               ))}
             </div>
 
-            {/* ── Mobile Toggle ── */}
+            {/* Mobile Menu Toggle */}
             <button
               className="md:hidden text-gray-300 hover:text-blue-400 transition-colors"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -225,7 +225,7 @@ const Navigation = () => {
             <button
               key={item.name}
               onClick={() => scrollTo(item.href)}
-              className={`flex items-center text-base w-full text-left text-gray-300 hover:text-blue-400
+              className={`flex items-center text-lg w-full text-left text-gray-300 hover:text-blue-400
                          ${
                            activeSection === item.href ? "text-blue-400" : ""
                          }`}
