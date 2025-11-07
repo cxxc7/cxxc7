@@ -38,16 +38,16 @@ const Navigation = () => {
   const iconSize = 24; // icon size
 
   const navItems = [
-    { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-2" /> },
-    { name: "About", href: "#about", icon: <User size={iconSize} className="mr-2" /> },
-    { name: "Education", href: "#education", icon: <Book size={iconSize} className="mr-2" /> },
-    { name: "Skills", href: "#skills", icon: <Code size={iconSize} className="mr-2" /> },
-    { name: "Projects", href: "#projects", icon: <Layers size={iconSize} className="mr-2" /> },
-    { name: "Experience", href: "#experience", icon: <Briefcase size={iconSize} className="mr-2" /> },
-    { name: "Extracurricular", href: "#extracurricular", icon: <Star size={iconSize} className="mr-2" /> },
-    { name: "Languages", href: "#languages", icon: <MessageSquare size={iconSize} className="mr-2" /> },
-    { name: "Contact", href: "#contact", icon: <Mail size={iconSize} className="mr-2" /> },
-  ];
+  { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-1" /> },
+  { name: "About", href: "#about", icon: <User size={iconSize} className="mr-1" /> },
+  { name: "Education", href: "#education", icon: <Book size={iconSize} className="mr-1" /> },
+  { name: "Skills", href: "#skills", icon: <Code size={iconSize} className="mr-1" /> },
+  { name: "Projects", href: "#projects", icon: <Layers size={iconSize} className="mr-1" /> },
+  { name: "Experience", href: "#experience", icon: <Briefcase size={iconSize} className="mr-1" /> },
+  { name: "Extracurricular", href: "#extracurricular", icon: <Star size={iconSize} className="mr-1" /> },
+  { name: "Languages", href: "#languages", icon: <MessageSquare size={iconSize} className="mr-1" /> },
+  { name: "Contact", href: "#contact", icon: <Mail size={iconSize} className="mr-1" /> },
+];
 
   useEffect(() => {
     const onScroll = () => {
