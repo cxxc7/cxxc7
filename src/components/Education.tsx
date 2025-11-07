@@ -28,30 +28,33 @@ const educationData = [
     dates: "2017 - 2020",
     grade: "100%",
     achievement: "State 1st Rank",
-    bgColor: "bg-pink-500/10",
-    borderColor: "border-pink-500/50",
-    textColor: "text-pink-400",
-    gradient: "from-pink-500 to-rose-500",
+    // Magenta theme
+    bgColor: "bg-fuchsia-500/10",
+    borderColor: "border-fuchsia-500/50",
+    textColor: "text-fuchsia-400",
+    gradient: "from-fuchsia-500 to-pink-500",
   },
   {
     school: "St. Joseph Boys High School",
     degree: "Middle School",
     dates: "2014 - 2017",
     grade: "—",
-    bgColor: "bg-gray-500/10",
-    borderColor: "border-gray-500/50",
-    textColor: "text-gray-400",
-    gradient: "from-gray-400 to-gray-600",
+    // Khaki theme
+    bgColor: "bg-amber-200/10",
+    borderColor: "border-amber-300/50",
+    textColor: "text-amber-300",
+    gradient: "from-amber-300 to-yellow-600",
   },
   {
     school: "Sophia High School",
     degree: "Pre-Primary and Primary School",
     dates: "2007 - 2014",
     grade: "—",
-    bgColor: "bg-yellow-500/10",
-    borderColor: "border-yellow-500/50",
-    textColor: "text-yellow-400",
-    gradient: "from-yellow-400 to-amber-500",
+    // Yellow-brown theme
+    bgColor: "bg-yellow-700/10",
+    borderColor: "border-yellow-700/50",
+    textColor: "text-yellow-600",
+    gradient: "from-yellow-600 to-amber-800",
   },
 ];
 
@@ -120,7 +123,7 @@ const Education = () => {
 
                           {/* Grade + Achievement */}
                           {item.grade !== "—" && (
-                            <div className="flex flex-wrap items-center gap-2">
+                            <div className="flex flex-wrap items-center gap-3">
                               <span
                                 className={`px-4 py-2 bg-gradient-to-r ${item.gradient} rounded-lg font-bold text-white text-lg shadow-lg`}
                               >
@@ -131,9 +134,9 @@ const Education = () => {
 
                               {item.achievement && (
                                 <span
-                                  className={`px-3 py-1 ${item.bgColor} ${item.textColor} rounded-full text-sm font-semibold border ${item.borderColor} flex items-center gap-1 transition-all`}
+                                  className={`px-5 py-2 ${item.bgColor} ${item.textColor} rounded-full text-base md:text-lg font-bold border ${item.borderColor} flex items-center gap-2 shadow-md shadow-current/20 transition-all duration-500 ease-out transform group-hover:scale-115 group-hover:-translate-y-1.5 group-hover:shadow-lg group-hover:shadow-current/40`}
                                 >
-                                  <span className="text-base group-hover:animate-pulse">
+                                  <span className="text-2xl transition-transform duration-500 group-hover:scale-125">
                                     {item.achievement.includes("1st")
                                       ? "🥇"
                                       : item.achievement.includes("2nd")
@@ -142,7 +145,7 @@ const Education = () => {
                                       ? "🥉"
                                       : "🏆"}
                                   </span>
-                                  {item.achievement}
+                                  <span className="tracking-wide">{item.achievement}</span>
                                 </span>
                               )}
                             </div>
