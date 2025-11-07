@@ -38,14 +38,14 @@ const Navigation = () => {
   const iconSize = 22;
 
   const navItems = [
-    { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-1.4" /> },
-    { name: "About", href: "#about", icon: <User size={iconSize} className="mr-1.4" /> },
-    { name: "Education", href: "#education", icon: <Book size={iconSize} className="mr-1.4" /> },
-    { name: "Skills", href: "#skills", icon: <Code size={iconSize} className="mr-1.4" /> },
-    { name: "Projects", href: "#projects", icon: <Layers size={iconSize} className="mr-1.4" /> },
-    { name: "Experience", href: "#experience", icon: <Briefcase size={iconSize} className="mr-1.4" /> },
-    { name: "Extracurricular", href: "#extracurricular", icon: <Star size={iconSize} className="mr-1.4" /> },
-    { name: "Languages", href: "#languages", icon: <MessageSquare size={iconSize} className="mr-1.4" /> },
+    { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-1.3" /> },
+    { name: "About", href: "#about", icon: <User size={iconSize} className="mr-1.3" /> },
+    { name: "Education", href: "#education", icon: <Book size={iconSize} className="mr-1.3" /> },
+    { name: "Skills", href: "#skills", icon: <Code size={iconSize} className="mr-1.3" /> },
+    { name: "Projects", href: "#projects", icon: <Layers size={iconSize} className="mr-1.3" /> },
+    { name: "Experience", href: "#experience", icon: <Briefcase size={iconSize} className="mr-1.3" /> },
+    { name: "Extracurricular", href: "#extracurricular", icon: <Star size={iconSize} className="mr-1.3" /> },
+    { name: "Languages", href: "#languages", icon: <MessageSquare size={iconSize} className="mr-1.3" /> },
     { name: "Contact", href: "#contact", icon: <Mail size={iconSize} className="mr-1" /> },
   ];
 
@@ -183,7 +183,7 @@ const Navigation = () => {
                   <span>{item.name}</span>
                   {/* Underline */}
                   <span
-                    className={`absolute -bottom-[8px] left-0 rounded-full bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 transition-all duration-300 ${
+                    className={`absolute -bottom-[3px] left-0 rounded-full bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 transition-all duration-300 ${
                       activeSection === item.href
                         ? "w-full h-[5px] opacity-100 shadow-[0_0_12px_rgba(56,189,248,1)]"
                         : "w-0 h-[4px] opacity-70 group-hover:w-full"
