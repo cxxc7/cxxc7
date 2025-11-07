@@ -170,7 +170,7 @@ const Navigation = () => {
             </div>
 
             {/* ── Desktop Nav ── */}
-            <div className="hidden md:flex space-x-6 items-center">
+            <div className="hidden md:flex space-x-3 items-center">
               {navItems.map((item) => (
                 <button
                   key={item.name}
