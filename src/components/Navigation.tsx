@@ -35,7 +35,7 @@ const Navigation = () => {
   const canvasRef = useRef(null);
   const animRef = useRef(null);
 
-  const iconSize = 22; // slightly smaller icons for tighter layout
+  const iconSize = 22;
 
   const navItems = [
     { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-1" /> },
@@ -53,6 +53,7 @@ const Navigation = () => {
     const onScroll = () => {
       setIsScrolled(window.scrollY > 50);
       const pos = window.scrollY + 100;
+
       for (const item of navItems) {
         const el = document.querySelector(item.href);
         if (el) {
@@ -60,11 +61,12 @@ const Navigation = () => {
           const bottom = top + el.offsetHeight;
           if (pos >= top && pos < bottom) {
             setActiveSection(item.href);
-            break;
+            return;
           }
         }
       }
     };
+
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -72,6 +74,7 @@ const Navigation = () => {
   const scrollTo = (href) => {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     setIsMobileOpen(false);
+    setActiveSection(href);
   };
 
   const toggleMatrixRain = () => {
@@ -182,13 +185,12 @@ const Navigation = () => {
                   {item.icon}
                   <span>{item.name}</span>
                   <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r
-                                 from-blue-400 to-cyan-400 transition-all duration-300
-                                 ${
-                                   activeSection === item.href
-                                     ? "w-full"
-                                     : "w-0 group-hover:w-full"
-                                 }`}
+                    className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300
+                      ${
+                        activeSection === item.href
+                          ? "w-full opacity-100 drop-shadow-[0_0_6px_rgba(56,189,248,0.8)]"
+                          : "w-0 group-hover:w-full opacity-60"
+                      }`}
                   />
                 </button>
               ))}
@@ -225,10 +227,9 @@ const Navigation = () => {
             <button
               key={item.name}
               onClick={() => scrollTo(item.href)}
-              className={`flex items-center text-lg w-full text-left text-gray-300 hover:text-blue-400
-                         ${
-                           activeSection === item.href ? "text-blue-400" : ""
-                         }`}
+              className={`flex items-center text-lg w-full text-left text-gray-300 hover:text-blue-400 ${
+                activeSection === item.href ? "text-blue-400" : ""
+              }`}
             >
               {item.icon}
               {item.name}
