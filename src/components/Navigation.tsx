@@ -35,19 +35,19 @@ const Navigation = () => {
   const canvasRef = useRef(null);
   const animRef = useRef(null);
 
-  const iconSize = 24; // icon size
+  const iconSize = 22; // slightly smaller icons for tighter layout
 
   const navItems = [
-  { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-1" /> },
-  { name: "About", href: "#about", icon: <User size={iconSize} className="mr-1" /> },
-  { name: "Education", href: "#education", icon: <Book size={iconSize} className="mr-1" /> },
-  { name: "Skills", href: "#skills", icon: <Code size={iconSize} className="mr-1" /> },
-  { name: "Projects", href: "#projects", icon: <Layers size={iconSize} className="mr-1" /> },
-  { name: "Experience", href: "#experience", icon: <Briefcase size={iconSize} className="mr-1" /> },
-  { name: "Extracurricular", href: "#extracurricular", icon: <Star size={iconSize} className="mr-1" /> },
-  { name: "Languages", href: "#languages", icon: <MessageSquare size={iconSize} className="mr-1" /> },
-  { name: "Contact", href: "#contact", icon: <Mail size={iconSize} className="mr-1" /> },
-];
+    { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-1" /> },
+    { name: "About", href: "#about", icon: <User size={iconSize} className="mr-1" /> },
+    { name: "Education", href: "#education", icon: <Book size={iconSize} className="mr-1" /> },
+    { name: "Skills", href: "#skills", icon: <Code size={iconSize} className="mr-1" /> },
+    { name: "Projects", href: "#projects", icon: <Layers size={iconSize} className="mr-1" /> },
+    { name: "Experience", href: "#experience", icon: <Briefcase size={iconSize} className="mr-1" /> },
+    { name: "Extracurricular", href: "#extracurricular", icon: <Star size={iconSize} className="mr-1" /> },
+    { name: "Languages", href: "#languages", icon: <MessageSquare size={iconSize} className="mr-1" /> },
+    { name: "Contact", href: "#contact", icon: <Mail size={iconSize} className="mr-1" /> },
+  ];
 
   useEffect(() => {
     const onScroll = () => {
@@ -167,13 +167,13 @@ const Navigation = () => {
               )}
             </div>
 
-            {/* Desktop Nav - all in one line */}
-            <div className="hidden md:flex flex-nowrap justify-end items-center space-x-2 overflow-x-auto whitespace-nowrap">
+            {/* Desktop Nav */}
+            <div className="hidden md:flex flex-nowrap justify-end items-center space-x-1 whitespace-nowrap overflow-hidden">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollTo(item.href)}
-                  className={`flex items-center text-base font-medium transition-all relative group px-3 ${
+                  className={`flex items-center text-sm font-medium transition-all relative group px-2 ${
                     activeSection === item.href
                       ? "text-blue-400"
                       : "text-gray-300 hover:text-blue-400"
