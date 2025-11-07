@@ -49,11 +49,11 @@ const Navigation = () => {
     { name: "Contact", href: "#contact", icon: <Mail size={iconSize} className="mr-1" /> },
   ];
 
+  // Scroll detection for active section
   useEffect(() => {
     const onScroll = () => {
       setIsScrolled(window.scrollY > 50);
       const pos = window.scrollY + 100;
-
       for (const item of navItems) {
         const el = document.querySelector(item.href);
         if (el) {
@@ -61,22 +61,22 @@ const Navigation = () => {
           const bottom = top + el.offsetHeight;
           if (pos >= top && pos < bottom) {
             setActiveSection(item.href);
-            return;
+            break;
           }
         }
       }
     };
-
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Smooth scroll
   const scrollTo = (href) => {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     setIsMobileOpen(false);
-    setActiveSection(href);
   };
 
+  // Matrix effect
   const toggleMatrixRain = () => {
     if (showMatrix) return;
     setMatrixClicked(true);
@@ -89,6 +89,7 @@ const Navigation = () => {
     }, 4000);
   };
 
+  // Canvas for matrix rain
   useEffect(() => {
     if (!showMatrix) return;
 
@@ -140,6 +141,17 @@ const Navigation = () => {
 
   return (
     <>
+      <style jsx>{`
+        @keyframes glowPulse {
+          0%, 100% {
+            filter: drop-shadow(0 0 6px rgba(56,189,248,0.8));
+          }
+          50% {
+            filter: drop-shadow(0 0 14px rgba(56,189,248,1));
+          }
+        }
+      `}</style>
+
       {/* ── Navbar ── */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
@@ -185,13 +197,13 @@ const Navigation = () => {
                   {item.icon}
                   <span>{item.name}</span>
                   <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300
+                    className={`absolute -bottom-1 left-0 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-300
                       ${
                         activeSection === item.href
-                          ? "w-full opacity-100 drop-shadow-[0_0_6px_rgba(56,189,248,0.8)]"
-                          : "w-0 group-hover:w-full opacity-60"
+                          ? "w-full h-[3px] opacity-100 animate-[glowPulse_2s_ease-in-out_infinite]"
+                          : "w-0 h-[2px] opacity-60 group-hover:w-full"
                       }`}
-                  />
+                  ></span>
                 </button>
               ))}
             </div>
@@ -227,9 +239,10 @@ const Navigation = () => {
             <button
               key={item.name}
               onClick={() => scrollTo(item.href)}
-              className={`flex items-center text-lg w-full text-left text-gray-300 hover:text-blue-400 ${
-                activeSection === item.href ? "text-blue-400" : ""
-              }`}
+              className={`flex items-center text-lg w-full text-left text-gray-300 hover:text-blue-400
+                         ${
+                           activeSection === item.href ? "text-blue-400" : ""
+                         }`}
             >
               {item.icon}
               {item.name}
