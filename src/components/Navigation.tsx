@@ -35,18 +35,18 @@ const Navigation = () => {
   const canvasRef = useRef(null);
   const animRef = useRef(null);
 
-  const iconSize = 22;
+  const iconSize = 25;
 
   const navItems = [
-    { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-1" /> },
-    { name: "About", href: "#about", icon: <User size={iconSize} className="mr-1" /> },
-    { name: "Education", href: "#education", icon: <Book size={iconSize} className="mr-1" /> },
-    { name: "Skills", href: "#skills", icon: <Code size={iconSize} className="mr-1" /> },
-    { name: "Projects", href: "#projects", icon: <Layers size={iconSize} className="mr-1" /> },
-    { name: "Experience", href: "#experience", icon: <Briefcase size={iconSize} className="mr-1" /> },
-    { name: "Extracurricular", href: "#extracurricular", icon: <Star size={iconSize} className="mr-1" /> },
-    { name: "Languages", href: "#languages", icon: <MessageSquare size={iconSize} className="mr-1" /> },
-    { name: "Contact", href: "#contact", icon: <Mail size={iconSize} className="mr-1" /> },
+    { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-0.8" /> },
+    { name: "About", href: "#about", icon: <User size={iconSize} className="mr-0.8" /> },
+    { name: "Education", href: "#education", icon: <Book size={iconSize} className="mr-0.8" /> },
+    { name: "Skills", href: "#skills", icon: <Code size={iconSize} className="mr-0.8" /> },
+    { name: "Projects", href: "#projects", icon: <Layers size={iconSize} className="mr-0.8" /> },
+    { name: "Experience", href: "#experience", icon: <Briefcase size={iconSize} className="mr-0.8" /> },
+    { name: "Extracurricular", href: "#extracurricular", icon: <Star size={iconSize} className="mr-0.8" /> },
+    { name: "Languages", href: "#languages", icon: <MessageSquare size={iconSize} className="mr-0.8" /> },
+    { name: "Contact", href: "#contact", icon: <Mail size={iconSize} className="mr-0.5" /> },
   ];
 
   // Scroll detection for active section
