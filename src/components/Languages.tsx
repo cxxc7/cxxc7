@@ -1,4 +1,3 @@
-
 const Languages = () => {
   const languages = [
     {
@@ -15,7 +14,7 @@ const Languages = () => {
     },
     {
       name: "Hindi",
-      level: "Proficient",
+      level: "Fluent",
       percentage: 83,
       color: "from-blue-500 to-indigo-500"
     },
@@ -24,6 +23,12 @@ const Languages = () => {
       level: "Conversational",
       percentage: 65,
       color: "from-indigo-500 to-purple-500"
+    },
+    {
+      name: "French",
+      level: "Beginner",
+      percentage: 35,
+      color: "from-green-400 to-teal-400"
     }
   ];
 
