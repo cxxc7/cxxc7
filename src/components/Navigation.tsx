@@ -30,12 +30,12 @@ const Navigation = () => {
   const [activeSection, setActiveSection] = useState("");
   const [showMatrix, setShowMatrix] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
-  const [matrixClicked, setMatrixClicked] = useState(false); // NEW
+  const [matrixClicked, setMatrixClicked] = useState(false);
 
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const animRef = useRef<number | null>(null);
+  const canvasRef = useRef(null);
+  const animRef = useRef(null);
 
-  const iconSize = 24;
+  const iconSize = 22;
 
   const navItems = [
     { name: "Home", href: "#home", icon: <Home size={iconSize} className="mr-2" /> },
@@ -56,8 +56,8 @@ const Navigation = () => {
       for (const item of navItems) {
         const el = document.querySelector(item.href);
         if (el) {
-          const top = (el as HTMLElement).offsetTop;
-          const bottom = top + (el as HTMLElement).offsetHeight;
+          const top = el.offsetTop;
+          const bottom = top + el.offsetHeight;
           if (pos >= top && pos < bottom) {
             setActiveSection(item.href);
             break;
@@ -69,15 +69,14 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollTo = (href: string) => {
+  const scrollTo = (href) => {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     setIsMobileOpen(false);
   };
 
   const toggleMatrixRain = () => {
     if (showMatrix) return;
-
-    setMatrixClicked(true); // Hide prompt after first click
+    setMatrixClicked(true);
     setShowMatrix(true);
     setFadeOut(false);
 
@@ -90,13 +89,12 @@ const Navigation = () => {
   useEffect(() => {
     if (!showMatrix) return;
 
-    const canvas = canvasRef.current!;
-    const ctx = canvas.getContext("2d")!;
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
     const navbarH = 64;
     const fontSize = 20;
     const spacing = fontSize * 8;
     const lineHeight = fontSize * 2.4;
-
     const fadeAlpha = 0.025;
     const speed = 0.5;
 
@@ -115,7 +113,6 @@ const Navigation = () => {
     const draw = () => {
       ctx.fillStyle = `rgba(0, 0, 0, ${fadeAlpha})`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
       ctx.fillStyle = "rgba(0, 255, 0, 0.6)";
       ctx.font = `${fontSize}px ui-monospace, SFMono-Regular, monospace`;
 
@@ -124,7 +121,6 @@ const Navigation = () => {
         const y = drops[i] * lineHeight;
         const word = matrixWords[Math.floor(Math.random() * matrixWords.length)];
         ctx.fillText(word, x, y);
-
         if (y > canvas.height && Math.random() > 0.95) drops[i] = 0;
         else drops[i] += speed;
       }
@@ -142,14 +138,16 @@ const Navigation = () => {
   return (
     <>
       {/* ── Top Navbar ── */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-slate-900/90 backdrop-blur-md shadow-xl border-b border-blue-500/20"
-          : "bg-transparent"
-      }`}>
+      <nav
+        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+          isScrolled
+            ? "bg-slate-900/90 backdrop-blur-md shadow-xl border-b border-blue-500/20"
+            : "bg-transparent"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            {/* ── NNM Logo with Tooltip and Hint ── */}
+            {/* ── Logo ── */}
             <div className="relative flex items-center space-x-2">
               <button
                 onClick={toggleMatrixRain}
@@ -170,12 +168,12 @@ const Navigation = () => {
             </div>
 
             {/* ── Desktop Nav ── */}
-            <div className="hidden md:flex space-x-4 items-center">
+            <div className="hidden md:flex flex-wrap justify-end items-center space-x-2 overflow-x-auto no-scrollbar">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollTo(item.href)}
-                  className={`flex items-center text-base font-medium transition-all relative group px-3 ${
+                  className={`flex items-center text-sm font-medium transition-all relative group px-2 ${
                     activeSection === item.href
                       ? "text-blue-400"
                       : "text-gray-300 hover:text-blue-400"
@@ -183,9 +181,15 @@ const Navigation = () => {
                 >
                   {item.icon}
                   <span>{item.name}</span>
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r
-                                   from-blue-400 to-cyan-400 transition-all duration-300
-                                   ${activeSection === item.href ? "w-full" : "w-0 group-hover:w-full"}`} />
+                  <span
+                    className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r
+                                 from-blue-400 to-cyan-400 transition-all duration-300
+                                 ${
+                                   activeSection === item.href
+                                     ? "w-full"
+                                     : "w-0 group-hover:w-full"
+                                 }`}
+                  />
                 </button>
               ))}
             </div>
@@ -202,12 +206,17 @@ const Navigation = () => {
       </nav>
 
       {/* ── Mobile Sidebar ── */}
-      <div className={`fixed top-0 left-0 h-full w-64 bg-slate-900/95 backdrop-blur-md pt-20 px-6 pb-6
+      <div
+        className={`fixed top-0 left-0 h-full w-64 bg-slate-900/95 backdrop-blur-md pt-20 px-6 pb-6
                        transform transition-transform duration-300 z-40 border-r border-blue-500/20 md:hidden
-                       ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}`}>
+                       ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}`}
+      >
         <div className="flex justify-between items-center mb-6">
           <span className="text-xl font-bold text-blue-400">Menu</span>
-          <button className="text-gray-300 hover:text-blue-400" onClick={() => setIsMobileOpen(false)}>
+          <button
+            className="text-gray-300 hover:text-blue-400"
+            onClick={() => setIsMobileOpen(false)}
+          >
             <X size={28} />
           </button>
         </div>
@@ -217,7 +226,9 @@ const Navigation = () => {
               key={item.name}
               onClick={() => scrollTo(item.href)}
               className={`flex items-center text-base w-full text-left text-gray-300 hover:text-blue-400
-                         ${activeSection === item.href ? "text-blue-400" : ""}`}
+                         ${
+                           activeSection === item.href ? "text-blue-400" : ""
+                         }`}
             >
               {item.icon}
               {item.name}
