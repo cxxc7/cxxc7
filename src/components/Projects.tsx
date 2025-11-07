@@ -128,7 +128,7 @@ const Projects = () => {
             variant="outline" 
             size="lg"
             className="border-gray-400 text-gray-300 hover:bg-white hover:text-slate-900 px-8 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105"
-            onClick={() => window.open('https://github.com/cxxc7', '_blank')}
+            onClick={() => window.open('https://github.com/cxxc7?tab=repositories', '_blank')}
           >
             View All Projects on GitHub
           </Button>
