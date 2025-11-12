@@ -55,7 +55,7 @@ const Navigation = () => {
       setIsScrolled(window.scrollY > 50);
       const pos = window.scrollY + 100;
       for (const item of navItems) {
-        const el = document.querySelector(item.href);
+        const el = document.querySelector(item.href) as HTMLElement;
         if (el) {
           const top = el.offsetTop;
           const bottom = top + el.offsetHeight;
