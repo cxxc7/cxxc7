@@ -25,10 +25,10 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Received contact form submission:", { name, email });
 
-    // Send email to your email address
+    // Send email to your email address (temporarily using Resend account email)
     const emailResponse = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
-      to: ["nikhileshmarali7@gmail.com"],
+      to: ["spamseena3@gmail.com"],
       replyTo: email,
       subject: `New Contact Form Message from ${name}`,
       html: `
